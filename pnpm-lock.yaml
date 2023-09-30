@@ -14,6 +14,9 @@ dependencies:
   '@astrojs/vercel':
     specifier: ^4.0.4
     version: 4.0.4(astro@3.0.10)
+  '@fontsource/barlow':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@types/react':
     specifier: ^18.0.21
     version: 18.2.21
@@ -871,6 +874,10 @@ packages:
     resolution: {integrity: sha512-ZSjtmelB7IJfWD2Fvb7+Z+ChTIKWq6kjda95fLcQKNS5aheVHn4IkfgRQE3sIIzTcSLwLcLZUD9UBt+V7+h+Pw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource/barlow@5.0.8:
+    resolution: {integrity: sha512-RMUw8YyoNG3o1rwMnfyyWqYuR7k6H48yYZwpCsgY0x7jeaRdp/FdyG6lPLD5P403kDyqauewldk+VDPhQ65+4w==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}

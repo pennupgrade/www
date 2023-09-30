@@ -1,17 +1,18 @@
 ---
+import BaseLayout from "@/layouts/base-layout.astro";
+import { Image } from "astro:assets";
 
+import Logo from "@/assets/logo.png";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-lg">Our website is uh. Not Finished. So join our Discord instead:</h1>
-		<a href="https://discord.gg/vrhDM7NHph" target="_blank" class="text-lg underline text-blue-500">link</a>
-	</body>
-</html>
+<BaseLayout
+  title="Penn UPGRADE"
+  description="UPGRADE is Penn's premier game development club. We welcome everyone who's interested in the game industry, including artists, programmers, designers, and more!"
+>
+  <main class="flex flex-col items-center justify-center min-h-screen p-10">
+    <Image src={Logo} alt="Penn UPGRADE logo" width="650" />
+    <p class="text-up-1 mt-10">
+      Our website is uh. A work in progress. So <a href="https://discord.gg/vrhDM7NHph" target="_blank" class="text-up-3 underline hover:text-up-2 transition-colors">join our Discord</a> instead!
+    </p>
+  </main>
+</BaseLayout>
