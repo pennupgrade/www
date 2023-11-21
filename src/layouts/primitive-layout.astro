@@ -1,15 +1,30 @@
 ---
+import "@/styles/base.css";
+
 interface Props {
   title: string;
   description: string;
 }
 
 const { title, description } = Astro.props;
+
+/**
+ * @see https://github.com/withastro/astro/issues/5248
+ */
+const removeTrailingSlash = (str: string) => {
+  return str.replace(/\/+$/, "");
+};
+
+const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
 ---
 
-<html lang="en">
+<!doctype html>
+<html
+  lang="en"
+  class="text-[16px]"
+>
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="description"
       content={description}
@@ -24,6 +39,15 @@ const { title, description } = Astro.props;
     />
 
     <link
+      rel="canonical"
+      href={canonicalUrl}
+    />
+    <link
+      rel="sitemap"
+      href="/sitemap-index.xml"
+    />
+
+    <link
       rel="icon"
       sizes="any"
       type="image/svg+xml"
@@ -35,10 +59,15 @@ const { title, description } = Astro.props;
       sizes="48x48"
       href="/favicon.png"
     />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+    />
 
     <title>{title}</title>
   </head>
-  <body class="bg-up-7">
+
+  <body class="bg-up-7 text-up-1">
     <slot />
   </body>
 </html>
