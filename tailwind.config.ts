@@ -10,7 +10,7 @@ const config = {
     },
     extend: {
       maxWidth: {
-        content: "1200px",
+        content: "1232px",
       },
       colors: {
         up: {
@@ -24,7 +24,7 @@ const config = {
         },
       },
       spacing: {
-        content: "1200px",
+        content: "1232px",
       }
     },
   },
