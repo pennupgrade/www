@@ -5,8 +5,8 @@ const config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     fontFamily: {
-      sans: [...defaultTheme.fontFamily.sans],
-      mono: [...defaultTheme.fontFamily.mono],
+      sans: ["Barlow", ...defaultTheme.fontFamily.sans],
+      mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
     },
     extend: {
       colors: {
