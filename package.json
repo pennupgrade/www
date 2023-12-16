@@ -13,6 +13,8 @@
     "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vercel": "^4.0.5",
+    "@fontsource-variable/jetbrains-mono": "^5.0.19",
+    "@fontsource/barlow": "^5.0.8",
     "astro": "^3.5.3",
     "clsx": "^2.0.0",
     "lucide-astro": "^0.279.0",
