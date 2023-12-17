@@ -5,7 +5,9 @@ import "@fontsource/barlow/400.css";
 import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
 
-import Header from "@/components/header.astro";
+import logoMdLight from "@/assets/logo/md/logo-md-light.png";
+import Link from "@/components/link.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   title: string;
@@ -74,7 +76,44 @@ const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site)
   </head>
 
   <body class="bg-up-7 text-up-1">
-    <Header />
+    <header class="fixed inset-x-0 top-0 bg-up-6">
+      <nav class="mx-auto flex max-w-content items-center justify-between p-4">
+        <a href="/">
+          <Image
+            src={logoMdLight}
+            alt="UPGRADE logo"
+            width={200}
+          />
+        </a>
+
+        <div class="flex items-center gap-6">
+          <Link
+            href="/#about"
+            className="hover:text-up-2"
+          >
+            about
+          </Link>
+          <Link
+            href="/#games"
+            className="hover:text-up-2"
+          >
+            games
+          </Link>
+          <Link
+            href="/#board"
+            className="hover:text-up-2"
+          >
+            board
+          </Link>
+          <Link
+            href="/#contact"
+            className="hover:text-up-2"
+          >
+            contact
+          </Link>
+        </div>
+      </nav>
+    </header>
     <slot />
   </body>
 </html>

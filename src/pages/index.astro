@@ -1,16 +1,63 @@
 ---
+import Link from "@/components/link.astro";
 import PrimitiveLayout from "@/layouts/primitive-layout.astro";
+import { Check, Copy } from "lucide-astro";
 ---
 
 <PrimitiveLayout
   title="UPGRADE"
   description="We are University of Pennsylvania's game development club. We make games, but also connect students to the game industry through game jams, speaker events, workshops, and more! All Penn students are free to join."
 >
-  <main class="max-w-content mx-auto min-h-screen space-y-10 px-4 py-28">
-    <p class="mr-80 text-6xl font-medium">UPGRADE is UPenn's one and only game development club</p>
-    <div class="flex items-center justify-between rounded-3xl bg-up-5 p-7">
-      <p>discord link</p>
-      <p>Join our Discord to get the latest updates and events!</p>
+  <main class="mx-auto max-w-content space-y-14 px-4 py-28">
+    <p class="text-[clamp(2rem,4.5vw,3.75rem)] font-medium leading-none">
+      UPGRADE is UPenn's one and only game development club
+    </p>
+    <div
+      class="flex flex-col items-center justify-between gap-3.5 rounded-3xl bg-up-5 p-5 md:flex-row"
+    >
+      <div class="flex items-center justify-between rounded-xl bg-up-6 p-3.5">
+        <Link
+          href="https://discord.gg/vrhDM7NHph"
+          className="ml-2.5 mr-5 font-mono hover:text-up-2"
+        >
+          discord.gg/vrhDM7NHph
+        </Link>
+
+        <button
+          id="copy-invite"
+          class="mr-1.5 rounded-md bg-up-7 p-3 hover:text-up-3"
+          aria-label="Copy"
+          ><Copy
+            id="copy-icon"
+            size={18}
+          /><Check
+            hidden
+            id="ok-icon"
+            size={18}
+          /></button
+        >
+      </div>
+      <p class="text-center md:text-right md:text-xl">
+        Join our Discord to get the latest updates, announcements, and events!
+      </p>
     </div>
   </main>
 </PrimitiveLayout>
+
+<script>
+  const copyInviteBtn = document.querySelector("#copy-invite");
+  const copyIcon = document.querySelector("#copy-icon");
+  const okIcon = document.querySelector("#ok-icon");
+
+  copyInviteBtn!.addEventListener("click", () => {
+    navigator.clipboard.writeText("https://discord.gg/vrhDM7NHph");
+
+    copyIcon!.setAttribute("hidden", "");
+    okIcon!.removeAttribute("hidden");
+
+    setTimeout(() => {
+      copyIcon!.removeAttribute("hidden");
+      okIcon!.setAttribute("hidden", "");
+    }, 1500);
+  });
+</script>
