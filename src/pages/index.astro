@@ -1,14 +1,44 @@
 ---
 import Link from "@/components/link.astro";
 import PrimitiveLayout from "@/layouts/primitive-layout.astro";
-import { Check, Copy, Megaphone } from "lucide-astro";
+import {
+  Check,
+  Copy,
+  Megaphone,
+  Paintbrush,
+  PencilRuler,
+  Code2,
+  Pencil,
+  Music,
+  Ban,
+  ScrollText,
+} from "lucide-astro";
+
+const aboutList = [
+  {
+    heading: "Game jams",
+    text: "We organize two 24-hour school-wide game jams, one during each semester. Anyone is welcome to participate.",
+  },
+  {
+    heading: "Workshops",
+    text: "For anyone new to game dev or looking to refine their skills, we host hands-on learning activities.",
+  },
+  {
+    heading: "Speaker events",
+    text: "We regularly invite alumni and key industry figures to come and talk about their experiences.",
+  },
+  {
+    heading: "Trips",
+    text: "As an officially recognized school club, we receive funding for trips to game conferences like PAX East!",
+  },
+];
 ---
 
 <PrimitiveLayout
   title="UPGRADE"
   description="We are University of Pennsylvania's game development club. We make games, but also connect students to the game industry through game jams, speaker events, workshops, and more! All Penn students are free to join."
 >
-  <main class="mx-auto max-w-content space-y-8 px-4 pt-32 sm:pt-24 lg:space-y-14 lg:pt-28">
+  <main class="mx-auto max-w-content space-y-12 px-4 pb-16 pt-32 sm:pt-24 lg:space-y-20 lg:pt-28">
     <p class="mr-0 text-[clamp(2rem,4.5vw,3.75rem)] font-medium leading-none sm:mr-[22.5%]">
       UPGRADE is UPenn's one and only <b>game development club</b>
     </p>
@@ -18,13 +48,13 @@ import { Check, Copy, Megaphone } from "lucide-astro";
         class="flex flex-col items-center justify-between gap-2 rounded-3xl bg-up-5 p-4 md:flex-row lg:gap-56"
       >
         <div
-          class="order-2 flex w-full items-center justify-between gap-2 overflow-x-auto rounded-xl bg-up-6 p-3 md:order-1 md:w-1/2"
+          class="order-2 flex w-full cursor-text items-center justify-between gap-2 overflow-x-auto rounded-xl bg-up-6 p-3 md:order-1 md:w-1/2"
         >
           <h2>
             <Link
               href="https://discord.gg/vrhDM7NHph"
               target="_blank"
-              className="ml-1.5 font-mono hover:text-up-3"
+              className="ml-1.5 font-mono hover:text-up-2"
             >
               discord.gg/vrhDM7NHph
             </Link>
@@ -47,7 +77,7 @@ import { Check, Copy, Megaphone } from "lucide-astro";
         <p
           class="order-1 mr-1.5 text-center font-medium md:order-2 md:w-1/2 md:text-right md:text-xl"
         >
-          Join our Discord to get the latest updates, announcements, and events!
+          Join our Discord to get the latest updates, announcements, and events
         </p>
       </div>
 
@@ -69,7 +99,104 @@ import { Check, Copy, Megaphone } from "lucide-astro";
         </p>
       </div>
     </section>
-    <p>This website is <b>under construction...</b> pardon our dust! 🚧</p>
+
+    <section
+      id="about"
+      class="flex scroll-mt-24 flex-col space-y-10 lg:flex-row lg:gap-10 lg:space-y-5"
+    >
+      <div class="space-y-3 lg:w-5/12">
+        <h2 class="text-3xl font-medium">What do we do?</h2>
+        <p>
+          Surprise surprise, we develop games. But beyond that, we also provide Penn students the
+          environment and resources to foster and flex their passion and creativity.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 grid-rows-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:w-7/12">
+        {
+          aboutList.map(({ heading, text }) => (
+            <div class="relative space-y-1.5 rounded-3xl bg-up-6 p-5 pt-8">
+              <div class="size-10 absolute -top-4 flex items-center justify-center bg-up-5">W</div>
+              <h3 class="text-xl font-medium">{heading}</h3>
+              <p>{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section class="space-y-5">
+      <h2 class="text-3xl font-medium">Application process? What's that?</h2>
+      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+        <p class="order-1 rounded-3xl bg-up-5 p-4">
+          We welcome anyone who is interested in any aspect of game development. That means you
+          artists, designers, programmers, writers, musicians, you get it...
+        </p>
+        <div class="order-2 flex items-center justify-center gap-2 rounded-3xl bg-up-6 p-4">
+          <Paintbrush />
+          <PencilRuler />
+          <Code2 />
+          <Pencil />
+          <Music />
+        </div>
+        <div
+          class="order-4 flex items-center justify-center gap-2 rounded-3xl bg-up-6 p-4 sm:order-3"
+        >
+          <Ban />
+          <ScrollText />
+        </div>
+        <p class="order-3 rounded-3xl bg-up-5 p-4 sm:order-4">
+          Unlike many Penn clubs, we don't do applications. Just show up to our weekly meetings to
+          get started! And join our Discord. Do that right now. Link above.
+        </p>
+      </div>
+    </section>
+
+    <section
+      id="games"
+      class="scroll-mt-24 space-y-5"
+    >
+      <h2 class="text-3xl font-medium">Games we've made!</h2>
+      <div class="space-y-4">
+        <span class="flex gap-1.5 text-xl">
+          <h3 class="font-medium">Minigame Collection</h3>
+          <span class="text-up-2">•</span>
+          <p class="italic">2023</p>
+        </span>
+        <div class="flex gap-5 overflow-x-auto rounded-3xl bg-up-6 p-5">
+          {
+            [1, 1, 1, 1, 1].map(() => (
+              <div class="flex h-64 w-96 shrink-0 items-center justify-center rounded-xl bg-up-5">
+                image
+              </div>
+            ))
+          }
+        </div>
+        <p>
+          Some text about the minigame collection idk I'm bad at this someone else should come up
+          with this instead.
+        </p>
+      </div>
+    </section>
+
+    <section
+      id="board"
+      class="scroll-mt-24 space-y-5"
+    >
+      <h2 class="text-3xl font-medium">Meet the board</h2>
+      <div class="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:grid-cols-6">
+        {
+          [1, 1, 1, 1, 1, 1].map(() => (
+            <div class="flex flex-col items-center justify-center gap-4">
+              <div class="size-32 flex items-center justify-center rounded-full bg-up-5">PFP</div>
+              <div class="flex flex-col items-center justify-center">
+                <h3 class="font-medium">name</h3>
+                <p>important role</p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
   </main>
 </PrimitiveLayout>
 
