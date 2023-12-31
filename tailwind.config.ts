@@ -9,6 +9,9 @@ const config = {
       mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
     },
     extend: {
+      maxWidth: {
+        content: "1232px",
+      },
       colors: {
         up: {
           1: "#DFF2FF",
@@ -20,6 +23,9 @@ const config = {
           7: "#04121C",
         },
       },
+      spacing: {
+        content: "1232px",
+      }
     },
   },
   plugins: [],

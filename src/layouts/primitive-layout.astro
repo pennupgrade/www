@@ -2,9 +2,13 @@
 import "@/styles/base.css";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/barlow/400.css";
+import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
 
-import Header from "@/components/header.astro";
+import logoLgLight from "@/assets/logo/lg/logo-lg-light.png";
+import logoMdLight from "@/assets/logo/md/logo-md-light.png";
+import Link from "@/components/link.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   title: string;
@@ -21,13 +25,12 @@ const removeTrailingSlash = (str: string) => {
 };
 
 const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
+
+const games = false;
 ---
 
 <!doctype html>
-<html
-  lang="en"
-  class="text-[16px]"
->
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -73,7 +76,166 @@ const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site)
   </head>
 
   <body class="bg-up-7 text-up-1">
-    <Header />
+    <header class="fixed inset-x-0 top-0 z-20 bg-up-6">
+      <nav
+        class="mx-auto flex max-w-content flex-col items-center justify-between gap-2.5 px-4 pb-3.5 pt-4 sm:flex-row sm:pb-4"
+      >
+        <a href="/">
+          <Image
+            src={logoMdLight}
+            alt="UPGRADE logo"
+            width={200}
+          />
+        </a>
+
+        <div class="flex items-center gap-6">
+          <Link
+            href="/#about"
+            className="lowercase hover:text-up-2"
+          >
+            About
+          </Link>
+          {
+            games ? (
+              <Link
+                href="/#games"
+                className="lowercase hover:text-up-2"
+              >
+                Games
+              </Link>
+            ) : null
+          }
+          <Link
+            href="/#board"
+            className="lowercase hover:text-up-2"
+          >
+            Board
+          </Link>
+          <Link
+            href="/#contact"
+            className="lowercase hover:text-up-2"
+          >
+            Contact
+          </Link>
+        </div>
+      </nav>
+    </header>
+
     <slot />
+
+    <footer
+      id="contact"
+      class="w-full scroll-mt-24 bg-up-6 pb-16 pt-10"
+    >
+      <div
+        class="mx-auto flex max-w-content flex-col items-center gap-10 px-8 md:grid md:grid-cols-2 md:items-start"
+      >
+        <Image
+          src={logoLgLight}
+          alt="Full club logo that says University of Pennsylvania Game and Research Development Environment"
+          class="w-96 md:w-10/12"
+        />
+
+        <div class="space-y-12">
+          <div class="space-y-3">
+            <h2 class="text-center text-xl font-medium md:text-left">Follow us on our socials!</h2>
+
+            <div class="grid grid-cols-2 gap-2.5 text-up-2">
+              <div class="text-center md:text-left">
+                <Link
+                  href="https://discord.gg/vrhDM7NHph"
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  Discord
+                </Link>
+              </div>
+
+              <div class="text-center md:text-left">
+                <Link
+                  href="https://www.instagram.com/pennupgrade/"
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  Instagram
+                </Link>
+              </div>
+
+              <div class="text-center md:text-left">
+                <Link
+                  href="https://twitter.com/penn_upgrade"
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  Twitter
+                </Link>
+              </div>
+
+              <div class="text-center md:text-left">
+                <Link
+                  href="https://github.com/pennupgrade"
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  GitHub
+                </Link>
+              </div>
+
+              <div class="text-center md:text-left">
+                <Link
+                  href="https://pennupgrade.itch.io/"
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  itch.io
+                </Link>
+              </div>
+
+              <div class="text-center md:text-left">
+                <Link
+                  href="https://store.steampowered.com/search/?developer=University%20of%20Pennsylvania%20Game%20Research%20and%20Development%20Environment"
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  Steam
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h2 class="text-center text-xl font-medium md:text-left">
+              Questions, inquiries? Email us:
+            </h2>
+            <div class="text-center md:text-left">
+              <Link
+                href="mailto:pennupgrade@gmail.com"
+                target="_blank"
+                className="text-up-2"
+              >
+                pennupgrade@gmail.com
+              </Link>
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            class="text-center font-mono text-up-5 md:text-left"
+          >
+            (✿◡‿◡)
+          </div>
+
+          <p class="text-center md:text-left">
+            <Link
+              href="https://github.com/pennupgrade/www"
+              target="_blank"
+              className="text-up-2"
+            >
+              Source
+            </Link> on our GitHub. Built in Philly. 💙
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
