@@ -32,6 +32,8 @@ const aboutList = [
     text: "As an officially recognized school club, we receive funding for trips to game conferences like PAX East!",
   },
 ];
+
+const games = false;
 ---
 
 <PrimitiveLayout
@@ -115,7 +117,7 @@ const aboutList = [
         {
           aboutList.map(({ heading, text }) => (
             <div class="relative space-y-1.5 rounded-3xl bg-up-6 p-5 pt-8">
-              <div class="size-10 absolute -top-4 flex items-center justify-center bg-up-5">W</div>
+              <div class="absolute -top-4 flex size-10 items-center justify-center bg-up-5">W</div>
               <h3 class="text-xl font-medium">{heading}</h3>
               <p>{text}</p>
             </div>
@@ -151,32 +153,34 @@ const aboutList = [
       </div>
     </section>
 
-    <section
-      id="games"
-      class="scroll-mt-24 space-y-5"
-    >
-      <h2 class="text-3xl font-medium">Games we've made!</h2>
-      <div class="space-y-4">
-        <span class="flex gap-1.5 text-xl">
-          <h3 class="font-medium">Minigame Collection</h3>
-          <span class="text-up-2">•</span>
-          <p class="italic">2023</p>
-        </span>
-        <div class="flex gap-5 overflow-x-auto rounded-3xl bg-up-6 p-5">
-          {
-            [1, 1, 1, 1, 1].map(() => (
-              <div class="flex h-64 w-96 shrink-0 items-center justify-center rounded-xl bg-up-5">
-                image
-              </div>
-            ))
-          }
-        </div>
-        <p>
-          Some text about the minigame collection idk I'm bad at this someone else should come up
-          with this instead.
-        </p>
-      </div>
-    </section>
+    {
+      games ? (
+        <section
+          id="games"
+          class="scroll-mt-24 space-y-5"
+        >
+          <h2 class="text-3xl font-medium">Games we've made!</h2>
+          <div class="space-y-4">
+            <span class="flex gap-1.5 text-xl">
+              <h3 class="font-medium">Minigame Collection</h3>
+              <span class="text-up-2">•</span>
+              <p class="italic">2023</p>
+            </span>
+            <div class="flex gap-5 overflow-x-auto rounded-3xl bg-up-6 p-5">
+              {[1, 1, 1, 1, 1].map(() => (
+                <div class="flex h-64 w-96 shrink-0 items-center justify-center rounded-xl bg-up-5">
+                  image
+                </div>
+              ))}
+            </div>
+            <p>
+              Some text about the minigame collection idk I'm bad at this someone else should come
+              up with this instead.
+            </p>
+          </div>
+        </section>
+      ) : null
+    }
 
     <section
       id="board"
@@ -187,7 +191,7 @@ const aboutList = [
         {
           [1, 1, 1, 1, 1, 1].map(() => (
             <div class="flex flex-col items-center justify-center gap-4">
-              <div class="size-32 flex items-center justify-center rounded-full bg-up-5">PFP</div>
+              <div class="flex size-32 items-center justify-center rounded-full bg-up-5">PFP</div>
               <div class="flex flex-col items-center justify-center">
                 <h3 class="font-medium">name</h3>
                 <p>important role</p>

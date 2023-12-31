@@ -25,6 +25,8 @@ const removeTrailingSlash = (str: string) => {
 };
 
 const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
+
+const games = false;
 ---
 
 <!doctype html>
@@ -93,12 +95,16 @@ const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site)
           >
             About
           </Link>
-          <Link
-            href="/#games"
-            className="lowercase hover:text-up-2"
-          >
-            Games
-          </Link>
+          {
+            games ? (
+              <Link
+                href="/#games"
+                className="lowercase hover:text-up-2"
+              >
+                Games
+              </Link>
+            ) : null
+          }
           <Link
             href="/#board"
             className="lowercase hover:text-up-2"
