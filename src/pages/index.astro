@@ -13,6 +13,7 @@ import {
   Ban,
   ScrollText,
 } from "lucide-astro";
+import { Image } from "astro:assets";
 
 const aboutList = [
   {
@@ -31,6 +32,22 @@ const aboutList = [
     heading: "Trips",
     text: "As an officially recognized school club, we receive funding for trips to game conferences like PAX East!",
   },
+];
+
+const board: { src?: string; name: string; role: string }[] = [
+  {
+    name: "Kevin Ma",
+    role: "President",
+  },
+  { name: "Ray Feng", role: "Vice President" },
+  { src: "anthony", name: "Anthony Ge", role: "Treasurer" },
+  {
+    src: "charles",
+    name: "Charles Wang",
+    role: "Events, Design",
+  },
+
+  { src: "christina", name: "Christina Qiu", role: "Industry Relations" },
 ];
 
 const games = false;
@@ -189,17 +206,36 @@ const games = false;
       class="scroll-mt-24 space-y-5"
     >
       <h2 class="text-3xl font-medium">Meet the board</h2>
-      <div class="grid grid-cols-2 gap-10 sm:grid-cols-4 lg:grid-cols-6">
+      <div
+        class="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-6 lg:gap-10"
+      >
         {
-          [1, 1, 1, 1, 1, 1].map(() => (
-            <div class="flex flex-col items-center justify-center gap-4">
-              <div class="flex size-32 items-center justify-center rounded-full bg-up-5">PFP</div>
-              <div class="flex flex-col items-center justify-center">
-                <h3 class="font-medium">name</h3>
-                <p>important role</p>
+          board.map(({ src, name, role }) => {
+            const [first, last] = name.split(" ");
+            const initials = `${first.charAt(0)}${last.charAt(0)}`;
+
+            return (
+              <div class="flex flex-col items-center justify-center gap-4">
+                {src ? (
+                  <Image
+                    src={import(`../assets/board/${src}.jpg`)}
+                    alt={`Photo of ${name}`}
+                    class="size-36 rounded-full bg-up-5"
+                  >
+                    {initials}
+                  </Image>
+                ) : (
+                  <div class="flex size-36 items-center justify-center rounded-full bg-up-5 text-3xl font-bold">
+                    {initials}
+                  </div>
+                )}
+                <div class="flex flex-col items-center justify-center">
+                  <h3 class="text-lg font-medium">{name}</h3>
+                  <p class="text-center">{role}</p>
+                </div>
               </div>
-            </div>
-          ))
+            );
+          })
         }
       </div>
     </section>
