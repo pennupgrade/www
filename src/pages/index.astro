@@ -36,10 +36,11 @@ const aboutList = [
 
 const board: { src?: string; name: string; role: string }[] = [
   {
+    src: "kevin",
     name: "Kevin Ma",
     role: "President",
   },
-  { name: "Ray Feng", role: "Vice President" },
+  { src: "ray", name: "Ray Feng", role: "Vice President" },
   { src: "anthony", name: "Anthony Ge", role: "Treasurer" },
   {
     src: "charles",
@@ -63,11 +64,11 @@ const games = false;
         UPGRADE is UPenn's one and only <b>game development club</b>
       </h2>
       <p>
-        We meet <span class="font-medium">every Saturday</span> from <span
-          class="font-medium"
+        We meet <span class="font-bold">every Saturday</span> from <span
+          class="font-bold"
           aria-label="4 to 7 PM"
           >4—7 PM</span
-        > in <span class="font-medium">Levine 307.</span>
+        > in <span class="font-bold">Levine 307.</span>
       </p>
     </div>
 
@@ -216,7 +217,7 @@ const games = false;
     >
       <h2 class="text-3xl font-medium">Meet the board</h2>
       <div
-        class="grid grid-cols-2 gap-5 sm:grid-cols-4 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-6 lg:gap-10"
+        class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
       >
         {
           board.map(({ src, name, role }) => {
