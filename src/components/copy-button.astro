@@ -1,0 +1,50 @@
+---
+import { Check, Copy } from "lucide-astro";
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<copy-button data-text={text}>
+  <button
+    type="button"
+    title="Copy to clipboard"
+    class="rounded-md bg-up-7 p-2 hover:text-up-3"
+    ><Copy
+      id="copy"
+      size={18}
+    /><Check
+      id="ok"
+      hidden
+      size={18}
+    /></button
+  >
+</copy-button>
+
+<script>
+  class CopyButton extends HTMLElement {
+    constructor() {
+      super();
+
+      const copy = this.querySelector("#copy");
+      const ok = this.querySelector("#ok");
+
+      this.addEventListener("click", () => {
+        navigator.clipboard.writeText(this.dataset.text!);
+
+        copy!.setAttribute("hidden", "");
+        ok!.removeAttribute("hidden");
+
+        setTimeout(() => {
+          copy!.removeAttribute("hidden");
+          ok!.setAttribute("hidden", "");
+        }, 1500);
+      });
+    }
+  }
+
+  customElements.define("copy-button", CopyButton);
+</script>

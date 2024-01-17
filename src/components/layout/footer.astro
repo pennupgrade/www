@@ -1,0 +1,119 @@
+---
+import logoLgLight from "@/assets/logo/lg/logo-lg-light.png";
+import Link from "@/components/link.astro";
+import { Image } from "astro:assets";
+import { Globe, Mail } from "lucide-astro";
+
+const socials = [
+  {
+    name: "Discord",
+    href: "https://discord.gg/vrhDM7NHph",
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/pennupgrade/",
+  },
+  {
+    name: "Twitter",
+    href: "https://twitter.com/penn_upgrade",
+  },
+  {
+    name: "GitHub",
+    href: "https://github.com/pennupgrade",
+  },
+  {
+    name: "itch.io",
+    href: "https://pennupgrade.itch.io/",
+  },
+  {
+    name: "Steam",
+    href: "https://store.steampowered.com/search/?developer=University%20of%20Pennsylvania%20Game%20Research%20and%20Development%20Environment",
+  },
+];
+---
+
+<footer
+  id="contact"
+  class="w-full bg-up-6 pb-16 pt-10"
+>
+  <div
+    class="mx-auto flex max-w-content flex-col items-center gap-10 px-8 md:grid md:grid-cols-2 md:items-start"
+  >
+    <Image
+      src={logoLgLight}
+      alt="Full club logo. It says UPGRADE, and below it University of Pennsylvania Game and Research Development Environment."
+      class="w-96 md:w-3/4"
+    />
+
+    <div class="space-y-12">
+      <div class="space-y-3">
+        <h2
+          class="flex items-center justify-center text-xl font-medium md:justify-start md:text-left"
+        >
+          <Globe
+            aria-hidden="true"
+            className="mr-1.5"
+            size={18}
+          />
+          <span>Follow us on our socials!</span>
+        </h2>
+
+        <div class="grid grid-cols-2 gap-2.5 text-up-2">
+          {
+            socials.map(({ name, href }) => (
+              <div class="text-center md:text-left">
+                <Link
+                  href={href}
+                  target="_blank"
+                  className="text-center md:text-left"
+                >
+                  {name}
+                </Link>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="space-y-3">
+        <h2
+          class="flex items-center justify-center text-xl font-medium md:justify-start md:text-left"
+        >
+          <Mail
+            aria-hidden="true"
+            className="mr-1.5"
+            size={18}
+          />
+          <span>Questions, inquiries? Email us:</span>
+        </h2>
+        <div class="text-center md:text-left">
+          <Link
+            href="mailto:pennupgrade@gmail.com"
+            target="_blank"
+            className="text-up-2"
+          >
+            pennupgrade@gmail.com
+          </Link>
+        </div>
+      </div>
+
+      <div
+        title="uwu"
+        aria-hidden="true"
+        class="cursor-not-allowed text-center font-mono text-up-5 md:text-left"
+      >
+        (✿◡‿◡)
+      </div>
+
+      <p class="text-center md:text-left">
+        <Link
+          href="https://github.com/pennupgrade/www"
+          target="_blank"
+          className="text-up-2"
+        >
+          {"Website code"}
+        </Link> on GitHub. Built in Philly. 💙
+      </p>
+    </div>
+  </div>
+</footer>

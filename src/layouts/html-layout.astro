@@ -1,0 +1,79 @@
+---
+import "@/styles/base.css";
+import "@fontsource-variable/jetbrains-mono";
+import "@fontsource/barlow/400.css";
+import "@fontsource/barlow/500.css";
+import "@fontsource/barlow/700.css";
+
+import Footer from "@/components/layout/footer.astro";
+import Header from "@/components/layout/header.astro";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+
+/**
+ * @see https://github.com/withastro/astro/issues/5248
+ */
+const removeTrailingSlash = (str: string) => {
+  return str.replace(/\/+$/, "");
+};
+
+const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content={description}
+    />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+    <meta
+      name="generator"
+      content={Astro.generator}
+    />
+
+    <link
+      rel="canonical"
+      href={canonicalUrl}
+    />
+    <link
+      rel="sitemap"
+      href="/sitemap-index.xml"
+    />
+
+    <link
+      rel="icon"
+      sizes="any"
+      type="image/svg+xml"
+      href="/favicon.svg"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="48x48"
+      href="/favicon.png"
+    />
+    <link
+      rel="icon"
+      href="/favicon.ico"
+    />
+
+    <title>{title}</title>
+  </head>
+
+  <body class="bg-up-7 text-up-1">
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+</html>

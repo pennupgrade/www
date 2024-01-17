@@ -1,0 +1,56 @@
+---
+import logoMdLight from "@/assets/logo/md/logo-md-light.png";
+import Link from "@/components/link.astro";
+import { Image } from "astro:assets";
+
+const games = false;
+---
+
+<header class="fixed inset-x-0 top-0 z-20 bg-up-6">
+  <nav
+    class="mx-auto flex max-w-content flex-col items-center justify-between gap-2.5 px-4 pb-3.5 pt-4 sm:flex-row sm:pb-4"
+  >
+    <a href="/">
+      <span class="sr-only">UPGRADE logo</span>
+      <Image
+        src={logoMdLight}
+        alt="UPGRADE logo. The word UPGRADE is to the right of the club icon."
+        width={200}
+      />
+    </a>
+
+    <div class="flex items-center gap-6">
+      <Link
+        href="/#about"
+        className="lowercase hover:text-up-2"
+      >
+        About
+      </Link>
+
+      {
+        games ? (
+          <Link
+            href="/#games"
+            className="lowercase hover:text-up-2"
+          >
+            Games
+          </Link>
+        ) : null
+      }
+
+      <Link
+        href="/#board"
+        className="lowercase hover:text-up-2"
+      >
+        Board
+      </Link>
+
+      <Link
+        href="/#contact"
+        className="lowercase hover:text-up-2"
+      >
+        Contact
+      </Link>
+    </div>
+  </nav>
+</header>
