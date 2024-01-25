@@ -5,9 +5,12 @@ import { defineConfig } from "astro/config";
 
 const config = defineConfig({
   site: "https://pennupgrade.com",
-  integrations: [sitemap(), tailwind({
-    applyBaseStyles: false,
-  })],
+  integrations: [
+    sitemap(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
+  ],
   output: "hybrid",
   adapter: vercel({
     imageService: true,

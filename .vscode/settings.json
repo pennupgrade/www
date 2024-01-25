@@ -3,15 +3,7 @@
     "source.fixAll.eslint": "explicit"
   },
   "eslint.options": {
-    "extensions": [
-      ".js", ".ts", ".md", ".mdx"
-    ]
+    "extensions": [".js", ".ts", ".md", ".mdx"]
   },
-  "eslint.validate": [
-    "javascript",
-    "astro",
-    "typescript",
-    "markdown",
-    "mdx"
-  ],
+  "eslint.validate": ["javascript", "astro", "typescript", "markdown", "mdx"]
 }

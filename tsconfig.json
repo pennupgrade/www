@@ -5,8 +5,8 @@
     "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
-    }
+      "@/*": ["src/*"],
+    },
   },
   "include": [
     "src/**/*",
@@ -16,6 +16,6 @@
     "**/*.astro",
     ".eslintrc.cjs",
     "tailwind.config.ts",
-    "astro.config.ts"
-  ]
+    "astro.config.ts",
+  ],
 }

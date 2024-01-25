@@ -25,7 +25,7 @@ const config = {
       },
       spacing: {
         content: "1232px",
-      }
+      },
     },
   },
   plugins: [],
