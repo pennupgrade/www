@@ -5,6 +5,7 @@ import Header from "@/components/layout/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import {
   Ban,
   Code2,
@@ -80,6 +81,9 @@ const updates = [
       "Thank you everyone for an <em>amazing</em> semester. We are now compiling all your games and will be publishing them in our Minigame Collection. <b>Have a good break and see you in Spring 2024!!</b>",
   },
 ];
+
+const allUpdates = await getCollection("updates");
+const current = allUpdates[0];
 
 const games = false;
 ---
