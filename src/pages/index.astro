@@ -8,6 +8,7 @@ import { Image } from "astro:assets";
 import {
   Ban,
   Code2,
+  Mail,
   Megaphone,
   Music,
   Paintbrush,
@@ -37,21 +38,29 @@ const aboutList = [
   },
 ];
 
-const board = [
+type BoardProps = { src: string; name: string; role: string; email: string };
+
+const board: BoardProps[] = [
   {
     src: "kevin",
     name: "Kevin Ma",
     role: "President",
+    email: "makev@seas.upenn.edu",
   },
-  { src: "ray", name: "Ray Feng", role: "Vice President" },
-  { src: "anthony", name: "Anthony Ge", role: "Treasurer" },
+  { src: "ray", name: "Ray Feng", role: "Vice President", email: "fengray@seas.upenn.edu" },
+  { src: "anthony", name: "Anthony Ge", role: "Treasurer", email: "geant@seas.upenn.edu" },
   {
     src: "charles",
     name: "Charles Wang",
     role: "Events, Design",
+    email: "czw@seas.upenn.edu",
   },
-
-  { src: "christina", name: "Christina Qiu", role: "Industry Relations" },
+  {
+    src: "christina",
+    name: "Christina Qiu",
+    role: "Industry Relations",
+    email: "chuu@seas.upenn.edu",
+  },
 ];
 
 const updates = [
@@ -235,12 +244,18 @@ const games = false;
       id="board"
       class="scroll-mt-32 space-y-5 sm:scroll-mt-24"
     >
-      <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
+      <div class="space-y-3">
+        <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
+        <p class="text-pretty text-center sm:text-left">
+          For inquiries about the club, please contact us through our club email below.
+        </p>
+      </div>
+
       <div
         class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
       >
         {
-          board.map(({ src, name, role }) => {
+          board.map(({ src, name, role, email }) => {
             const [first, last] = name.split(" ");
             const initials = `${first.charAt(0)}${last.charAt(0)}`;
 
@@ -262,6 +277,16 @@ const games = false;
                 <div class="flex flex-col items-center justify-center">
                   <h3 class="text-lg font-bold">{name}</h3>
                   <p class="text-center">{role}</p>
+                  <Link
+                    href={`mailto:${email}`}
+                    className="text-up-2 flex items-center"
+                  >
+                    <Mail
+                      class="mr-1.5"
+                      size={15}
+                    />{" "}
+                    Contact
+                  </Link>
                 </div>
               </div>
             );
