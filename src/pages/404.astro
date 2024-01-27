@@ -1,0 +1,23 @@
+---
+import Header from "@/components/layout/header.astro";
+import Link from "@/components/link.astro";
+import HtmlLayout from "@/layouts/html-layout.astro";
+---
+
+<HtmlLayout
+  title="404"
+  description="Error 404, page not found"
+>
+  <Header />
+
+  <main class="flex min-h-screen flex-col items-center justify-center gap-2">
+    <h2 class="font-mono text-4xl font-medium">404</h2>
+    <p>Sorry, page not found.</p>
+    <Link
+      href="/"
+      className="text-up-2"
+    >
+      Go back home
+    </Link>
+  </main>
+</HtmlLayout>

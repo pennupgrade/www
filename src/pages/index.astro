@@ -1,5 +1,7 @@
 ---
 import CopyButton from "@/components/copy-button.astro";
+import Footer from "@/components/layout/footer.astro";
+import Header from "@/components/layout/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
@@ -74,9 +76,10 @@ const games = false;
 ---
 
 <HtmlLayout
-  title="UPGRADE"
   description="We are University of Pennsylvania's game development club. We make games, but also connect students to the game industry through game jams, speaker events, workshops, and more! All Penn students are free to join."
 >
+  <Header />
+
   <main class="mx-auto max-w-content space-y-12 px-4 pb-16 pt-32 sm:pt-24 lg:space-y-20 lg:pt-28">
     <div class="space-y-5 text-xl md:space-y-8 lg:text-2xl">
       <h2
@@ -267,4 +270,6 @@ const games = false;
       </div>
     </section>
   </main>
+
+  <Footer />
 </HtmlLayout>

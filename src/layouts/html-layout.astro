@@ -5,11 +5,8 @@ import "@fontsource/barlow/400.css";
 import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
 
-import Footer from "@/components/layout/footer.astro";
-import Header from "@/components/layout/header.astro";
-
 interface Props {
-  title: string;
+  title?: string;
   description: string;
 }
 
@@ -23,6 +20,7 @@ const removeTrailingSlash = (str: string) => {
 };
 
 const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
+const finalTitle = (title ? `${title} ✦ ` : "") + "UPGRADE";
 ---
 
 <!doctype html>
@@ -68,12 +66,10 @@ const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site)
       href="/favicon.ico"
     />
 
-    <title>{title}</title>
+    <title>{finalTitle}</title>
   </head>
 
   <body class="bg-up-7 text-up-1">
-    <Header />
     <slot />
-    <Footer />
   </body>
 </html>

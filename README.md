@@ -6,4 +6,4 @@ this repository contains the code for our website at [pennupgrade.com](https://p
 
 ## contributions
 
-currently maintained by [Charles Wang](https://charl.sh). thanks to Christina Qiu, Anthony Ge, and Ray Feng for helping!
+built and maintained by [Charles Wang](https://charl.sh). thanks to Christina Qiu, Anthony Ge, and Ray Feng for helping!
