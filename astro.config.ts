@@ -7,8 +7,8 @@ import { defineConfig } from "astro/config";
 const config = defineConfig({
   site: "https://pennupgrade.com",
   integrations: [
-    sitemap(),
     mdx(),
+    sitemap(),
     tailwind({
       applyBaseStyles: false,
     }),
