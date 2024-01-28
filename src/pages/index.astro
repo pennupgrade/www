@@ -5,6 +5,7 @@ import Header from "@/components/layout/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
 import {
   Ban,
   Code2,
@@ -38,48 +39,11 @@ const aboutList = [
   },
 ];
 
-type BoardProps = { src: string; name: string; role: string; email: string };
+const updates = await getCollection("updates");
+updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
+const { Content } = await updates[0].render();
 
-const board: BoardProps[] = [
-  {
-    src: "kevin",
-    name: "Kevin Ma",
-    role: "President",
-    email: "makev@seas.upenn.edu",
-  },
-  { src: "ray", name: "Ray Feng", role: "Vice President", email: "fengray@seas.upenn.edu" },
-  { src: "anthony", name: "Anthony Ge", role: "Treasurer", email: "geant@seas.upenn.edu" },
-  {
-    src: "charles",
-    name: "Charles Wang",
-    role: "Events, Design",
-    email: "czw@seas.upenn.edu",
-  },
-  {
-    src: "christina",
-    name: "Christina Qiu",
-    role: "Industry Relations",
-    email: "chuu@seas.upenn.edu",
-  },
-];
-
-const updates = [
-  {
-    dateTime: "2024-01-25T15:36:50.964Z",
-    message:
-      "We're organizing another 24-hour game jam! Join us starting on Feb 3 @ 10 AM in Towne 337. Check <span class='font-mono text-sm'>#announcements</span> for more info. <span class='font-medium'>Winners get free tickets to PAX East!!</span> See you there.",
-  },
-  {
-    dateTime: "2024-01-17T05:56:21.090Z",
-    message:
-      "Welcome back! We hope you had a good break. Reminder to sign up for a coffee chat sometime during the week of 1/21 if you're submitting a game proposal. ☕",
-  },
-  {
-    dateTime: "2023-12-31T08:26:00.000Z",
-    message:
-      "Thank you everyone for an <em>amazing</em> semester. We are now compiling all your games and will be publishing them in our Minigame Collection. <b>Have a good break and see you in Spring 2024!!</b>",
-  },
-];
+const board = await getCollection("board");
 
 const games = false;
 ---
@@ -141,10 +105,11 @@ const games = false;
           />
           Latest update
         </h2>
-        <p
+        <div
           class="text-pretty rounded-b-3xl bg-up-6 p-4 md:w-2/3 md:rounded-r-3xl md:rounded-bl-none"
-          set:html={updates[0].message}
-        />
+        >
+          <Content />
+        </div>
       </div>
     </section>
 
@@ -255,7 +220,7 @@ const games = false;
         class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
       >
         {
-          board.map(({ src, name, role, email }) => {
+          board.map(({ data: { src, name, role, email } }) => {
             const [first, last] = name.split(" ");
             const initials = `${first.charAt(0)}${last.charAt(0)}`;
 
