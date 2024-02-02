@@ -23,6 +23,9 @@ dependencies:
   '@fontsource/barlow':
     specifier: ^5.0.8
     version: 5.0.8
+  '@vercel/analytics':
+    specifier: ^1.1.2
+    version: 1.1.2
   astro:
     specifier: ^4.2.6
     version: 4.2.6(typescript@5.3.3)

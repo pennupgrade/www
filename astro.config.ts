@@ -16,6 +16,9 @@ const config = defineConfig({
   output: "hybrid",
   adapter: vercel({
     imageService: true,
+    webAnalytics: {
+      enabled: true,
+    },
   }),
   // see https://noahflk.com/blog/trailing-slashes-astro
   trailingSlash: "never",
