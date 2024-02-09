@@ -2,8 +2,6 @@
 import logoMdLight from "@/assets/logo/md/logo-md-light.png";
 import Link from "@/components/link.astro";
 import { Image } from "astro:assets";
-
-const games = false;
 ---
 
 <header class="fixed inset-x-0 top-0 z-20 bg-up-6">
@@ -26,17 +24,6 @@ const games = false;
       >
         About
       </Link>
-
-      {
-        games ? (
-          <Link
-            href="/#games"
-            className="lowercase hover:text-up-2"
-          >
-            Games
-          </Link>
-        ) : null
-      }
 
       <Link
         href="/#board"
