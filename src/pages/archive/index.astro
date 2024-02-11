@@ -1,15 +1,69 @@
 ---
+import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
+import { getCollection } from "astro:content";
+import { Archive } from "lucide-astro";
+
+const updates = await getCollection("updates");
+updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
 ---
 
 <HtmlLayout
   title="Archive"
   description="A list of past updates and announcements from us."
 >
-  <main class="mx-auto max-w-content px-4 pb-16 pt-32 sm:pt-24 lg:pt-28">
-    <Header />
+  <Header />
 
-    <h2 class="text-4xl">Archive</h2>
+  <main class="mx-auto max-w-content space-y-10 px-4 pb-16 pt-32 sm:pt-24 lg:pt-28">
+    <section class="space-y-5">
+      <div
+        class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-end sm:justify-start"
+      >
+        <div
+          class="flex size-11 items-center justify-center rounded-full bg-up-6"
+          aria-hidden="true"
+        >
+          <Archive class="stroke-up-3" />
+        </div>
+        <h2 class="flex text-5xl font-medium">Archive</h2>
+      </div>
+
+      <p class="text-pretty text-center sm:w-3/4 sm:text-left">
+        Here you can find all the messages, updates, and announcements we've ever posted on the
+        website. Any linked resources will be here as well.
+      </p>
+    </section>
+
+    <section>
+      {
+        updates.map(async (update) => {
+          const { Content } = await update.render();
+          const { dateTime } = update.data;
+
+          return (
+            <div class="grid grid-cols-1 gap-5 border-t border-up-6 pb-20 pt-6 sm:grid-cols-3 sm:gap-0">
+              <time
+                class="col-span-1 font-mono text-sm text-up-2"
+                datetime={dateTime.toISOString()}
+              >
+                Posted{" "}
+                {dateTime.toLocaleDateString("en-US", {
+                  month: "short",
+                  day: "numeric",
+                  year: "numeric",
+                })}
+              </time>
+
+              <div class="col-span-2">
+                <Content />
+              </div>
+            </div>
+          );
+        })
+      }
+    </section>
   </main>
+
+  <Footer />
 </HtmlLayout>
