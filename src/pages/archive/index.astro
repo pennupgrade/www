@@ -21,7 +21,7 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
         class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-end sm:justify-start"
       >
         <div
-          class="flex size-11 items-center justify-center space-y-[1em] rounded-full bg-up-6"
+          class="flex size-11 items-center justify-center rounded-full bg-up-6"
           aria-hidden="true"
         >
           <Archive class="stroke-up-3" />
@@ -79,7 +79,7 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
                 </time>
               </div>
 
-              <div class="text-pretty rounded-2xl bg-up-6 p-7">
+              <div class="space-y-[1em] text-pretty rounded-2xl bg-up-6 p-7">
                 <Content />
               </div>
             </div>
