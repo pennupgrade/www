@@ -36,53 +36,55 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
       </p>
     </section>
 
-    <section>
+    <section class="space-y-5">
       {
         updates.map(async (update) => {
           const { Content } = await update.render();
           const { dateTime } = update.data;
 
           return (
-            <div class="grid grid-cols-1 gap-5 border-t border-up-5 pb-16 pt-5 sm:grid-cols-4 sm:gap-0">
-              <div class="grid grid-cols-2 sm:block">
-                <div class="flex items-center gap-2">
-                  <CalendarFold
-                    class="stroke-up-2"
-                    size={16}
-                  />
-                  <time
-                    class="col-span-1 font-mono text-sm text-up-2"
-                    datetime={dateTime.toISOString()}
-                  >
-                    {dateTime.toLocaleDateString("en-US", {
-                      month: "short",
-                      day: "numeric",
-                      year: "numeric",
-                    })}
-                  </time>
+            <>
+              <div class="space-y-2.5 rounded-lg bg-up-6 p-2.5">
+                <div class="border-b border-up-5">
+                  <Content />
                 </div>
 
-                <div class="flex items-center gap-2">
-                  <Clock
-                    class="stroke-up-2"
-                    size={16}
-                  />
-                  <time
-                    class="col-span-1 font-mono text-sm text-up-2"
-                    datetime={dateTime.toISOString()}
-                  >
-                    {dateTime.toLocaleTimeString("en-US", {
-                      hour: "numeric",
-                      minute: "numeric",
-                    })}
-                  </time>
+                <div class="flex gap-2">
+                  <div class="flex items-center gap-2">
+                    <CalendarFold
+                      class="stroke-up-2"
+                      size={16}
+                    />
+                    <time
+                      class="col-span-1 font-mono text-sm text-up-2"
+                      datetime={dateTime.toISOString()}
+                    >
+                      {dateTime.toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                        year: "numeric",
+                      })}
+                    </time>
+                  </div>
+
+                  <div class="flex items-center gap-2">
+                    <Clock
+                      class="stroke-up-2"
+                      size={16}
+                    />
+                    <time
+                      class="col-span-1 font-mono text-sm text-up-2"
+                      datetime={dateTime.toISOString()}
+                    >
+                      {dateTime.toLocaleTimeString("en-US", {
+                        hour: "numeric",
+                        minute: "numeric",
+                      })}
+                    </time>
+                  </div>
                 </div>
               </div>
-
-              <div class="col-span-3">
-                <Content />
-              </div>
-            </div>
+            </>
           );
         })
       }
