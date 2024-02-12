@@ -1,0 +1,93 @@
+---
+import Footer from "@/components/layout/footer.astro";
+import Header from "@/components/layout/header.astro";
+import HtmlLayout from "@/layouts/html-layout.astro";
+import { getCollection } from "astro:content";
+import { Archive, CalendarFold, Clock } from "lucide-astro";
+
+const updates = await getCollection("updates");
+updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
+---
+
+<HtmlLayout
+  title="Archive"
+  description="A list of past updates and announcements from us."
+>
+  <Header />
+
+  <main class="mx-auto max-w-[800px] space-y-10 px-4 pb-16 pt-32 sm:pt-24 lg:pt-28">
+    <section class="space-y-5">
+      <div
+        class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-end sm:justify-start"
+      >
+        <div
+          class="flex size-11 items-center justify-center rounded-full bg-up-6"
+          aria-hidden="true"
+        >
+          <Archive class="stroke-up-3" />
+        </div>
+        <h2 class="flex text-4xl font-medium sm:text-5xl">Archive</h2>
+      </div>
+
+      <p class="text-pretty text-center sm:text-left">
+        Here lives all the updates we've ever posted on our website. This list does not <em
+          >everything</em
+        > that's going on though. Our Instagram and Discord are much more up to date!
+      </p>
+    </section>
+
+    <section class="space-y-10">
+      {
+        updates.map(async (update) => {
+          const { Content } = await update.render();
+          const { dateTime } = update.data;
+
+          return (
+            <div class="flex flex-col items-center gap-3.5 border-t border-up-6 sm:items-start">
+              <div class="flex items-center gap-6 pt-3.5 font-mono text-sm">
+                <time
+                  class="flex items-center gap-1.5"
+                  datetime={dateTime.toISOString()}
+                >
+                  <CalendarFold
+                    class="stroke-up-2"
+                    size={16}
+                    aria-hidden="true"
+                  />
+
+                  {dateTime.toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                </time>
+
+                <time
+                  class="flex items-center gap-1.5"
+                  datetime={dateTime.toISOString()}
+                >
+                  <Clock
+                    class="stroke-up-2"
+                    size={16}
+                    aria-hidden="true"
+                  />
+
+                  {dateTime.toLocaleTimeString("en-US", {
+                    hour: "numeric",
+                    minute: "numeric",
+                  })}
+                </time>
+              </div>
+
+              <div class="text-pretty rounded-2xl bg-up-6 p-7">
+                <Content />
+              </div>
+            </div>
+          );
+        })
+      }
+    </section>
+  </main>
+
+  <Footer />
+</HtmlLayout>

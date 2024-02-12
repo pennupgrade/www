@@ -19,21 +19,7 @@ import { Image } from "astro:assets";
 
     <div class="flex items-center gap-6">
       <Link
-        href="/#about"
-        className="lowercase hover:text-up-2"
-      >
-        About
-      </Link>
-
-      <Link
-        href="/#board"
-        className="lowercase hover:text-up-2"
-      >
-        Board
-      </Link>
-
-      <Link
-        href="/#contact"
+        href=`${Astro.url.pathname}#contact`
         className="lowercase hover:text-up-2"
       >
         Contact

@@ -9,7 +9,6 @@ import { getCollection } from "astro:content";
 import {
   Ban,
   Code2,
-  Mail,
   Megaphone,
   Music,
   Paintbrush,
@@ -94,15 +93,27 @@ const { Content } = await updates[0].render();
       </div>
 
       <div class="flex flex-col md:flex-row">
-        <h2
-          class="flex flex-row items-center justify-center gap-2.5 rounded-t-3xl bg-up-5/50 p-4 text-xl font-medium sm:justify-start md:w-1/3 md:rounded-l-3xl md:rounded-tr-none"
+        <div
+          class="flex flex-row items-center justify-center gap-4 rounded-t-3xl bg-up-5/50 p-4 text-xl font-medium sm:justify-start md:w-1/3 md:rounded-l-3xl md:rounded-tr-none"
         >
-          <Megaphone
+          <div
+            class="flex size-11 items-center justify-center rounded-full bg-up-6"
             aria-hidden="true"
-            class="shrink-0 stroke-up-2"
-          />
-          Latest update
-        </h2>
+          >
+            <Megaphone class="shrink-0 stroke-up-3" />
+          </div>
+
+          <div>
+            <h2 class="leading-none">Latest update</h2>
+            <Link
+              href="/archive"
+              className="text-base text-up-2 hover:underline"
+            >
+              Archive
+            </Link>
+          </div>
+        </div>
+
         <div
           class="space-y-[1em] text-pretty rounded-b-3xl bg-up-6 p-4 md:w-2/3 md:rounded-r-3xl md:rounded-bl-none"
         >
@@ -118,8 +129,8 @@ const { Content } = await updates[0].render();
       <div class="space-y-3 lg:w-5/12">
         <h2 class="text-center text-3xl font-medium sm:text-left">What do we do?</h2>
         <p class="text-pretty text-center sm:text-left">
-          Surprise surprise, we develop games. Beyond that though, we also provide Penn students the
-          resources to foster their passion and creativity.
+          Surprise surprise, we primarily make games. But beyond that, we also provide UPenn
+          students the resources and opportunities to foster their passion and creativity.
         </p>
       </div>
       <div class="grid grid-cols-1 grid-rows-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:w-7/12">
@@ -178,49 +189,29 @@ const { Content } = await updates[0].render();
       id="board"
       class="scroll-mt-32 space-y-5 sm:scroll-mt-24"
     >
-      <div class="space-y-3">
-        <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
-        <p class="text-pretty text-center sm:text-left">
-          For inquiries about the club, please contact us through our club email below.
-        </p>
-      </div>
+      <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
 
       <div
         class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
       >
         {
-          board.map(({ data: { src, name, role, email } }) => {
+          board.map(({ data: { src, name, role } }) => {
             const [first, last] = name.split(" ");
             const initials = `${first.charAt(0)}${last.charAt(0)}`;
 
             return (
               <div class="flex flex-col items-center justify-center gap-4">
-                {src ? (
-                  <Image
-                    src={import(`../assets/board/${src}.jpg`)}
-                    alt={`Photograph of ${name}`}
-                    class="size-36 rounded-full bg-up-5"
-                  >
-                    {initials}
-                  </Image>
-                ) : (
-                  <div class="flex size-36 items-center justify-center rounded-full bg-up-5 text-3xl font-bold">
-                    {initials}
-                  </div>
-                )}
+                <Image
+                  src={import(`../assets/board/${src}.jpg`)}
+                  alt={`Photograph of ${name}`}
+                  class="size-40 rounded-full bg-up-5 object-cover"
+                >
+                  {initials}
+                </Image>
+
                 <div class="flex flex-col items-center justify-center">
                   <h3 class="text-lg font-bold">{name}</h3>
                   <p class="text-center">{role}</p>
-                  <Link
-                    href={`mailto:${email}`}
-                    className="text-up-2 flex items-center"
-                  >
-                    <Mail
-                      class="mr-1.5"
-                      size={15}
-                    />{" "}
-                    Contact
-                  </Link>
                 </div>
               </div>
             );
