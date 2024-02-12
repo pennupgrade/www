@@ -3,7 +3,7 @@ import Footer from "@/components/layout/footer.astro";
 import Header from "@/components/layout/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { getCollection } from "astro:content";
-import { Archive } from "lucide-astro";
+import { Archive, CalendarFold, Clock } from "lucide-astro";
 
 const updates = await getCollection("updates");
 updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
@@ -16,7 +16,7 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
   <Header />
 
   <main class="mx-auto max-w-content space-y-10 px-4 pb-16 pt-32 sm:pt-24 lg:pt-28">
-    <section class="space-y-5">
+    <section class="space-y-4">
       <div
         class="flex flex-col items-center justify-center gap-3 sm:flex-row sm:items-end sm:justify-start"
       >
@@ -29,9 +29,10 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
         <h2 class="flex text-5xl font-medium">Archive</h2>
       </div>
 
-      <p class="text-pretty text-center sm:w-3/4 sm:text-left">
-        Here you can find all the messages, updates, and announcements we've ever posted on the
-        website. Any linked resources will be here as well.
+      <p class="text-pretty text-center sm:text-left">
+        Here lives all the messages, updates, and announcements we've ever posted on our website.
+        This list does not represent <em>everything</em> that's going on though. Our Instagram and Discord
+        are much more up to date!
       </p>
     </section>
 
@@ -42,20 +43,43 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
           const { dateTime } = update.data;
 
           return (
-            <div class="grid grid-cols-1 gap-5 border-t border-up-6 pb-20 pt-6 sm:grid-cols-3 sm:gap-0">
-              <time
-                class="col-span-1 font-mono text-sm text-up-2"
-                datetime={dateTime.toISOString()}
-              >
-                Posted{" "}
-                {dateTime.toLocaleDateString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-              </time>
+            <div class="grid grid-cols-1 gap-5 border-t border-up-5 pb-16 pt-5 sm:grid-cols-4 sm:gap-0">
+              <div class="grid grid-cols-2 sm:block">
+                <div class="flex items-center gap-2">
+                  <CalendarFold
+                    class="stroke-up-2"
+                    size={16}
+                  />
+                  <time
+                    class="col-span-1 font-mono text-sm text-up-2"
+                    datetime={dateTime.toISOString()}
+                  >
+                    {dateTime.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                    })}
+                  </time>
+                </div>
 
-              <div class="col-span-2">
+                <div class="flex items-center gap-2">
+                  <Clock
+                    class="stroke-up-2"
+                    size={16}
+                  />
+                  <time
+                    class="col-span-1 font-mono text-sm text-up-2"
+                    datetime={dateTime.toISOString()}
+                  >
+                    {dateTime.toLocaleTimeString("en-US", {
+                      hour: "numeric",
+                      minute: "numeric",
+                    })}
+                  </time>
+                </div>
+              </div>
+
+              <div class="col-span-3">
                 <Content />
               </div>
             </div>
