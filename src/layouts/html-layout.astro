@@ -4,6 +4,7 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/barlow/400.css";
 import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title?: string;
@@ -67,6 +68,8 @@ const finalTitle = (title ? `${title} ✦ ` : "") + "UPGRADE";
     />
 
     <title>{finalTitle}</title>
+
+    <ViewTransitions fallback="none" />
   </head>
 
   <body class="bg-up-7 text-up-1">
