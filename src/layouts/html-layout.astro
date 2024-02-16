@@ -4,6 +4,7 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/barlow/400.css";
 import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
+import SpeedInsights from "@vercel/speed-insights/astro";
 import { ViewTransitions } from "astro:transitions";
 
 interface Props {
@@ -70,6 +71,7 @@ const finalTitle = (title ? `${title} ✦ ` : "") + "UPGRADE";
     <title>{finalTitle}</title>
 
     <ViewTransitions fallback="none" />
+    <SpeedInsights />
   </head>
 
   <body class="bg-up-7 text-up-1">
