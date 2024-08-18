@@ -6,4 +6,8 @@
   code {
     @apply font-mono text-sm;
   }
+
+  html {
+    font-size: 17px;
+  }
 }

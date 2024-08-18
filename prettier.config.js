@@ -10,7 +10,6 @@ const config = {
     },
   ],
   printWidth: 100,
-  singleAttributePerLine: true,
   tailwindFunctions: ["cn", "clsx", "twMerge"],
 };
 

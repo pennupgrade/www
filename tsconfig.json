@@ -1,12 +1,14 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"],
+      "@/*": ["src/*"]
     },
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noPropertyAccessFromIndexSignature": true
   },
   "include": [
     "src/**/*",
@@ -16,6 +18,6 @@
     "**/*.astro",
     ".eslintrc.cjs",
     "tailwind.config.ts",
-    "astro.config.ts",
-  ],
+    "astro.config.ts"
+  ]
 }
