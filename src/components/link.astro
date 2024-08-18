@@ -1,5 +1,4 @@
 ---
-import { cn } from "@/utils/cn";
 import type { HTMLAttributes } from "astro/types";
 
 interface Props extends Omit<HTMLAttributes<"a">, "class"> {
@@ -11,6 +10,6 @@ const { className, ...attrs } = Astro.props;
 
 <a
   {...attrs}
-  class={cn("w-fit decoration-wavy decoration-1 underline-offset-2 hover:underline", className)}
+  class:list={["w-fit decoration-wavy decoration-1 underline-offset-2 hover:underline", className]}
   ><slot /></a
 >

@@ -16,11 +16,6 @@ const config = defineConfig({
   output: "static",
   adapter: vercel({
     imageService: true,
-    imagesConfig: {
-      domains: [],
-      formats: ["image/avif", "image/webp"],
-      sizes: [80, 96, 144, 160, 196, 240, 256, 320, 384, 480, 496, 520, 640, 768, 850],
-    },
     webAnalytics: {
       enabled: true,
     },
