@@ -45,24 +45,16 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
 const { Content } = await updates[0].render();
 ---
 
-<HtmlLayout
-  description="We are University of Pennsylvania's game development club. We make games, but also connect students to the game industry through game jams, speaker events, workshops, and more! All Penn students are free to join."
->
+<HtmlLayout description="We are University of Pennsylvania's game development club.">
   <Header />
 
-  <main class="mx-auto max-w-content space-y-12 px-6 pb-16 pt-32 sm:pt-24 lg:space-y-20 lg:pt-28">
-    <div class="space-y-5 text-xl md:space-y-8 lg:text-2xl">
-      <h2
-        class="mr-0 text-center text-[clamp(2rem,4.5vw,3.75rem)] font-medium leading-none sm:mr-[15%] sm:text-left"
-      >
-        Hey there! We are UPGRADE, UPenn's <b>game development club</b>
+  <main class="mx-auto max-w-content px-4 pt-32 sm:pt-28">
+    <div class="space-y-8">
+      <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
+        Hey there! We're UPGRADE, <br /> UPenn's game development club.
       </h2>
-      <p class="text-center sm:text-left">
-        We meet <span class="font-bold">every Saturday</span> from <span
-          class="font-bold"
-          aria-label="4 to 7 PM">2—5 PM</span
-        > in <span class="font-bold">Levine 307.</span>
-      </p>
+
+      <p class="text-24">Since 2016, we've been making games. Join us!</p>
     </div>
 
     <section class="space-y-5">
