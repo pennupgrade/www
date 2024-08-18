@@ -1,6 +1,6 @@
 ---
-import Footer from "@/components/layout/footer.astro";
-import Header from "@/components/layout/header.astro";
+import Footer from "@/components/footer.astro";
+import Header from "@/components/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { getCollection } from "astro:content";
 import { Archive, CalendarFold, Clock } from "lucide-astro";
@@ -9,10 +9,7 @@ const updates = await getCollection("updates");
 updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
 ---
 
-<HtmlLayout
-  title="Archive"
-  description="A list of past updates and announcements from us."
->
+<HtmlLayout title="Archive" description="A list of past updates and announcements from us.">
   <Header />
 
   <main class="mx-auto max-w-[800px] space-y-10 px-4 pb-16 pt-32 sm:pt-24 lg:pt-28">
@@ -45,15 +42,8 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
           return (
             <div class="flex flex-col items-center gap-3.5 border-t border-up-6 sm:items-start">
               <div class="flex items-center gap-6 pt-3.5 font-mono text-sm">
-                <time
-                  class="flex items-center gap-1.5"
-                  datetime={dateTime.toISOString()}
-                >
-                  <CalendarFold
-                    class="stroke-up-2"
-                    size={16}
-                    aria-hidden="true"
-                  />
+                <time class="flex items-center gap-1.5" datetime={dateTime.toISOString()}>
+                  <CalendarFold class="stroke-up-2" size={16} aria-hidden="true" />
 
                   {dateTime.toLocaleDateString("en-US", {
                     month: "short",
@@ -62,15 +52,8 @@ updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
                   })}
                 </time>
 
-                <time
-                  class="flex items-center gap-1.5"
-                  datetime={dateTime.toISOString()}
-                >
-                  <Clock
-                    class="stroke-up-2"
-                    size={16}
-                    aria-hidden="true"
-                  />
+                <time class="flex items-center gap-1.5" datetime={dateTime.toISOString()}>
+                  <Clock class="stroke-up-2" size={16} aria-hidden="true" />
 
                   {dateTime.toLocaleTimeString("en-US", {
                     hour: "numeric",

@@ -1,7 +1,7 @@
 ---
 import CopyButton from "@/components/copy-button.astro";
-import Footer from "@/components/layout/footer.astro";
-import Header from "@/components/layout/header.astro";
+import Footer from "@/components/footer.astro";
+import Header from "@/components/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
@@ -49,15 +49,13 @@ const { Content } = await updates[0].render();
   <Header />
 
   <main class="mx-auto max-w-content px-4 pt-32 sm:pt-28">
-    <div class="space-y-8">
+    <section class="space-y-8">
       <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
         Hey there! We're UPGRADE, <br /> UPenn's game development club.
       </h2>
 
       <p class="text-24">Since 2016, we've been making games. Join us!</p>
-    </div>
 
-    <section class="space-y-5">
       <div
         class="flex flex-col items-center justify-between gap-2 rounded-3xl bg-up-5 p-4 md:flex-row lg:gap-56"
       >
@@ -82,7 +80,9 @@ const { Content } = await updates[0].render();
           Join our Discord to get the latest updates, announcements, and events!
         </p>
       </div>
+    </section>
 
+    <section class="space-y-5">
       <div class="flex flex-col md:flex-row">
         <div
           class="flex flex-row items-center justify-center gap-4 rounded-t-3xl bg-up-5/50 p-4 text-xl font-medium sm:justify-start md:w-1/3 md:rounded-l-3xl md:rounded-tr-none"
