@@ -9,5 +9,6 @@
 
   html {
     font-size: 17px;
+    @apply bg-up-12 text-up-1;
   }
 }

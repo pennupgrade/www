@@ -4,6 +4,7 @@ import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/barlow/400.css";
 import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
+
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { ViewTransitions } from "astro:transitions";
 
@@ -14,14 +15,10 @@ interface Props {
 
 const { title, description } = Astro.props;
 
-/**
- * @see https://github.com/withastro/astro/issues/5248
- */
-const removeTrailingSlash = (str: string) => {
-  return str.replace(/\/+$/, "");
-};
+// see https://github.com/withastro/astro/issues/5248
+let canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+canonicalUrl = canonicalUrl.replace(/\/+$/, "");
 
-const canonicalUrl = removeTrailingSlash(new URL(Astro.url.pathname, Astro.site).toString());
 const finalTitle = (title ? `${title} ✦ ` : "") + "UPGRADE";
 ---
 
@@ -61,7 +58,7 @@ const finalTitle = (title ? `${title} ✦ ` : "") + "UPGRADE";
     <SpeedInsights />
   </head>
 
-  <body class="bg-up-7 text-up-1">
+  <body>
     <slot />
   </body>
 </html>
