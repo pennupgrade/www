@@ -2,8 +2,8 @@
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
 
-this repository contains the code for our website at [pennupgrade.com](https://pennupgrade.com). it was built with Astro and is currently deployed on Vercel.
+Source code for our website, [pennupgrade.com](https://pennupgrade.com). It's built with Astro and is currently deployed on Vercel's free plan.
 
-## contributions
+## Contributions
 
-built and maintained by [Charles Wang](https://charl.sh). thanks to Christina Qiu, Anthony Ge, and Ray Feng for helping!
+Built and maintained by [Charles Wang](https://charleszw.com). Thanks to Christina Qiu, Anthony Ge, and Ray Feng for helping!
