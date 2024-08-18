@@ -1,29 +1,34 @@
 ---
-import logoMdLight from "@/assets/logo/md/logo-md-light.png";
-import Link from "@/components/link.astro";
 import { Image } from "astro:assets";
+import logoLight from "@/assets/logo-light.png";
+import Link from "@/components/link.astro";
+
+const FULL_TITLE = "University of Pennsylvania Game Research and Development Environment";
 ---
 
-<header class="fixed inset-x-0 top-0 z-20 bg-up-6">
+<header class="fixed inset-x-0 top-0 bg-up-12">
   <nav
-    class="mx-auto flex max-w-content flex-col items-center justify-between gap-2.5 px-4 pb-3.5 pt-4 sm:flex-row sm:pb-4"
+    class="mx-auto flex max-w-content flex-col items-center justify-between gap-4 p-4 sm:flex-row sm:pb-4"
   >
-    <a href="/">
+    <a href="/" title={FULL_TITLE} aria-label={FULL_TITLE}>
       <span class="sr-only">UPGRADE logo</span>
       <Image
-        src={logoMdLight}
-        alt="UPGRADE logo. The word UPGRADE is to the right of the club icon."
-        width={200}
+        src={logoLight}
+        alt="UPGRADE logo. It consists of the word UPGRADE located to the right of the club icon."
+        width={190}
       />
     </a>
 
-    <div class="flex items-center gap-6">
-      <Link
-        href=`${Astro.url.pathname}#contact`
-        className="lowercase hover:text-up-2"
+    <div class="flex items-center gap-8">
+      <Link href="/about" className="text-up-2">About</Link>
+      <Link href="/games" className="text-up-2">Games</Link>
+      <Link href="/events" className="text-up-2">Events</Link>
+
+      <a
+        href="https://discord.gg/vrhDM7NHph"
+        target="_blank"
+        class="rounded-full bg-up-9 px-4 py-1 hover:bg-up-8">Discord</a
       >
-        Contact
-      </Link>
     </div>
   </nav>
 </header>
