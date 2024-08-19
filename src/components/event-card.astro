@@ -5,16 +5,16 @@ let date = new Date();
 
 <a href="/events" class="group">
   <div class="h-full w-full rounded-2xl bg-up-10 p-5 group-hover:bg-up-9">
-    <div class="flex justify-between font-mono">
+    <div class="mb-2 flex justify-between gap-4 font-mono sm:mb-0">
       <p class="font-bold text-up-2">{type === "upcoming" ? "Upcoming" : "Last"} event</p>
       <p
-        class="rounded-full bg-up-9 px-3.5 py-1 text-up-4 group-hover:bg-up-8 group-hover:text-up-3"
+        class="h-fit rounded-full bg-up-9 px-3.5 py-1 text-up-4 group-hover:bg-up-8 group-hover:text-up-3 sm:hidden lg:block"
       >
         Archive
       </p>
     </div>
 
-    <h2 class="text-30 mb-1.5 font-medium">Game Jam 2022</h2>
+    <h2 class="mb-1.5 text-30 font-medium">Game Jam 2022</h2>
 
     <p class="mb-4 line-clamp-3">
       Hello and welcome! We're excited to host another game jam, and we're glad you decided to join.
