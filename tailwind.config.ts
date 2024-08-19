@@ -36,6 +36,9 @@ const config = {
       spacing: {
         content: "1051px",
       },
+      screens: {
+        content: "1051px",
+      },
     },
   },
 } satisfies Config;

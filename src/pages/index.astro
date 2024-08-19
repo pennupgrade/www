@@ -2,8 +2,8 @@
 import CopyButton from "@/components/copy-button.astro";
 import EventCard from "@/components/event-card.astro";
 import FeaturedGame from "@/components/featured-game.astro";
-import Footer from "@/components/footer.astro";
-import Header from "@/components/header.astro";
+import Footer from "@/layouts/footer.astro";
+import Header from "@/layouts/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
@@ -19,6 +19,7 @@ import {
   PlusCircle,
   ScrollText,
 } from "lucide-astro";
+import SpikySection from "@/layouts/spiky-section.astro";
 
 const aboutList = [
   {
@@ -45,8 +46,8 @@ const board = await getCollection("board");
 <HtmlLayout description="We are University of Pennsylvania's game development club.">
   <Header />
 
-  <main class="mx-auto max-w-content space-y-16 px-4 pt-32 sm:pt-28">
-    <section class="space-y-6">
+  <main class="space-y-16 pt-32 sm:pt-28">
+    <section class="mx-auto max-w-content space-y-6 px-4">
       <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
         Hey there! We're UPGRADE, <br /> UPenn's game development club.
       </h2>
@@ -54,10 +55,46 @@ const board = await getCollection("board");
       <p class="text-24">Since 2016, we've been making games. Join us!</p>
     </section>
 
-    <section class="grid grid-cols-2 gap-6">
+    <section class="content:gap-6 mx-auto grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2">
       <FeaturedGame />
       <EventCard />
     </section>
+
+    <SpikySection>
+      <div class="mb-12 space-y-2">
+        <h2 class="text-30 font-medium leading-none">So what exactly do we do?</h2>
+        <p class="max-w-[425px]">
+          Beyond making games, we also provide UPenn students the resources, opportunities, and
+          environment to foster their passion and creativity.
+        </p>
+      </div>
+
+      <div class="content:gap-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div class="space-y-2 rounded-2xl bg-up-10 p-4">
+          <h3 class="font-bold">Game jams.</h3>
+          <p>
+            We host at least one game jam each school year. Food and vibes included for free. Anyone
+            is welcome to participate. Grand prize are free tickets to PAX East every spring.
+          </p>
+        </div>
+
+        <div class="space-y-2 rounded-2xl bg-up-10 p-4">
+          <h3 class="font-bold">Workshops + tutorials.</h3>
+          <p>
+            For anyone new to making games or if you're simply looking to refine your skills, we
+            often host hands-on learning activities.
+          </p>
+        </div>
+
+        <div class="space-y-2 rounded-2xl bg-up-10 p-4">
+          <h3 class="font-bold">Speaker events + collabs.</h3>
+          <p>
+            We regularly invite alumni and key industry figures to come and talk about their
+            experiences. We also do crossovers with other Penn clubs!
+          </p>
+        </div>
+      </div>
+    </SpikySection>
 
     <section
       class="flex flex-col items-center justify-between gap-2 rounded-3xl bg-up-5 p-4 md:flex-row lg:gap-56"
