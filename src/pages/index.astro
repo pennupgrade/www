@@ -11,7 +11,6 @@ import { getCollection } from "astro:content";
 import {
   Ban,
   Code2,
-  Megaphone,
   Music,
   Paintbrush,
   PartyPopper,
@@ -41,10 +40,6 @@ const aboutList = [
 ];
 
 const board = await getCollection("board");
-const updates = await getCollection("updates");
-
-updates.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
-const { Content } = await updates[0].render();
 ---
 
 <HtmlLayout description="We are University of Pennsylvania's game development club.">
@@ -64,7 +59,7 @@ const { Content } = await updates[0].render();
       <EventCard />
     </section>
 
-    <div
+    <section
       class="flex flex-col items-center justify-between gap-2 rounded-3xl bg-up-5 p-4 md:flex-row lg:gap-56"
     >
       <div
@@ -87,32 +82,6 @@ const { Content } = await updates[0].render();
       >
         Join our Discord to get the latest updates, announcements, and events!
       </p>
-    </div>
-
-    <section class="space-y-5">
-      <div class="flex flex-col md:flex-row">
-        <div
-          class="flex flex-row items-center justify-center gap-4 rounded-t-3xl bg-up-5/50 p-4 text-xl font-medium sm:justify-start md:w-1/3 md:rounded-l-3xl md:rounded-tr-none"
-        >
-          <div
-            class="flex size-11 items-center justify-center rounded-full bg-up-6"
-            aria-hidden="true"
-          >
-            <Megaphone class="shrink-0 stroke-up-3" />
-          </div>
-
-          <div>
-            <h2 class="leading-none">Latest update</h2>
-            <Link href="/archive" className="text-base text-up-2 hover:underline"> Archive </Link>
-          </div>
-        </div>
-
-        <div
-          class="space-y-[1em] text-pretty rounded-b-3xl bg-up-6 p-4 md:w-2/3 md:rounded-r-3xl md:rounded-bl-none"
-        >
-          <Content />
-        </div>
-      </div>
     </section>
 
     <section
