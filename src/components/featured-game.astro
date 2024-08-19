@@ -1,0 +1,37 @@
+---
+import GameTag from "@/components/game-tag.astro";
+---
+
+<a href="/games/bionic-traveler" class="group">
+  <div class="h-full w-full rounded-2xl bg-up-10 p-5 group-hover:bg-up-9">
+    <div class="flex justify-between font-mono">
+      <p class="font-bold text-up-2">Featured game</p>
+      <p
+        class="rounded-full bg-up-9 px-3.5 py-1 text-up-4 group-hover:bg-up-8 group-hover:text-up-3"
+      >
+        View
+      </p>
+    </div>
+
+    <h2 class="text-30 mb-3 font-medium">Bionic Traveler</h2>
+
+    <p class="mb-5 line-clamp-3">
+      Under the leadership of Di Lu (SEAS '22) and Edward Zhang (SEAS + Wharton '23), UPGRADE sought
+      to use the development of this project to teach its members the processes of game development,
+      to serve as an outlet for creative expression, and to provide the expression of bringing a
+      game from concept all the way to market. Thus, the contents of this game were made over the
+      course of a singular academic year at UPenn off of weekly meetings, a few extra-meeting
+      crunches, and a hackathon. The game was ultimately not entirely finished, but this build that
+      is now listed on Steam serves to show off the work that the students in this club were able to
+      accomplish on top of their rigorous course loads at UPenn.
+    </p>
+
+    <ul class="flex flex-wrap gap-2.5">
+      <GameTag type="club" />
+      <GameTag type="student" />
+      <GameTag type="gamejam" />
+      <GameTag type="itch.io" />
+      <GameTag type="steam" />
+    </ul>
+  </div>
+</a>

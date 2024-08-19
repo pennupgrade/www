@@ -6,7 +6,7 @@ const config = {
   theme: {
     fontFamily: {
       sans: ["Barlow", ...defaultTheme.fontFamily.sans],
-      mono: ["JetBrains Mono Variable", ...defaultTheme.fontFamily.mono],
+      mono: ["Hermit", ...defaultTheme.fontFamily.mono],
     },
     extend: {
       fontSize: {
