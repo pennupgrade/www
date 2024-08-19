@@ -1,0 +1,53 @@
+---
+interface Props {
+  type: "club" | "student" | "gamejam" | "itch.io" | "steam";
+}
+
+let { type } = Astro.props;
+
+let tag = "";
+let title = "";
+switch (type) {
+  case "club":
+    tag = "CLB";
+    title = "Club-wide game";
+    break;
+
+  case "student":
+    tag = "STU";
+    title = "Student-made game";
+    break;
+
+  case "gamejam":
+    tag = "GMJ";
+    title = "Made during one of our gamejams";
+    break;
+
+  case "itch.io":
+    tag = "ICH";
+    title = "Published on itch.io";
+    break;
+
+  case "steam":
+    tag = "STM";
+    title = "Published on Steam";
+    break;
+
+  default:
+    throw new Error("GameTag: unreachable!");
+}
+---
+
+<li
+  title={title}
+  class:list={[
+    "rounded-full px-2 pb-0.5 pt-1 font-mono font-bold leading-none",
+    { "bg-up-5 text-up-9": type === "club" },
+    { "bg-orange-600 text-white": type === "student" },
+    { "bg-green-400 text-black": type === "gamejam" },
+    { "bg-[#434343] text-[#FA5C5C]": type === "itch.io" },
+    { "bg-[#1B2838] text-[#6EB9F6]": type === "steam" },
+  ]}
+>
+  {tag}
+</li>
