@@ -44,3 +44,10 @@
     @apply bg-up-12 text-up-1;
   }
 }
+
+@layer utilities {
+  .spiky {
+    background-image: url("data:image/svg+xml,%3Csvg width='47' height='26' viewBox='0 0 47 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 23V0L23.5 23L47 0V23V26H0V23Z' fill='%23051A2A'/%3E%3C/svg%3E%0A");
+    background-repeat: repeat-x;
+  }
+}

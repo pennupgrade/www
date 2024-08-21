@@ -1,0 +1,42 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+import HtmlLayout from "@/layouts/html-layout.astro";
+
+const board = await getCollection("board");
+---
+
+<HtmlLayout description="About the club"
+  ><section id="board" class="scroll-mt-32 space-y-5 sm:scroll-mt-24">
+    <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
+
+    <div
+      class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
+    >
+      {
+        board.map(({ data: { src, name, role } }) => {
+          const [first, last] = name.split(" ");
+          const initials = `${first.charAt(0)}${last.charAt(0)}`;
+
+          return (
+            <div class="flex flex-col items-center justify-center gap-4">
+              <Image
+                src={import(`../assets/board/${src}.jpg`)}
+                alt={`Photograph of ${name}`}
+                class="size-40 rounded-full bg-up-5 object-cover"
+              >
+                {initials}
+              </Image>
+
+              <div class="flex flex-col items-center justify-center">
+                <h3 class="text-lg font-bold">{name}</h3>
+                <p class="text-center">{role}</p>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </section></HtmlLayout
+>
