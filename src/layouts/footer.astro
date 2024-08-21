@@ -1,6 +1,6 @@
 ---
+import CopyButton from "@/components/copy-button.astro";
 import Link from "@/components/link.astro";
-import { Globe, Mail } from "lucide-astro";
 
 const socials = [
   {
@@ -22,58 +22,52 @@ const socials = [
 ];
 ---
 
-<footer id="contact" class="w-full bg-up-6 pb-16 pt-10">
-  <div
-    class="mx-auto flex max-w-content flex-col items-center gap-10 px-10 md:grid md:grid-cols-2 md:items-start"
-  >
-    <div class="space-y-12">
-      <div class="space-y-3">
-        <h2
-          class="flex items-center justify-center text-center text-xl font-medium md:justify-start md:text-left"
-        >
-          <Globe aria-hidden="true" className="mr-1.5 hidden sm:block" size={18} />
-          <span>Follow us on our socials!</span>
-        </h2>
+<footer class="relative w-full bg-up-11 pb-20 pt-12">
+  <div aria-hidden class="spiky absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
 
-        <div class="grid grid-cols-2 gap-2.5 text-up-2">
-          {
-            socials.map(({ name, href }) => (
-              <div class="text-center md:text-left">
-                <Link href={href} target="_blank" className="text-center md:text-left">
-                  {name}
-                </Link>
-              </div>
-            ))
-          }
-        </div>
-      </div>
+  <div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-4 sm:grid-cols-2">
+    <div>
+      <h2 class="mb-7 text-24 font-medium leading-none">Questions, inquiries? Email us:</h2>
 
-      <div class="space-y-3">
-        <h2
-          class="flex items-center justify-center text-center text-xl font-medium md:justify-start md:text-left"
-        >
-          <Mail aria-hidden="true" className="mr-1.5 hidden sm:block" size={18} />
-          <span>Questions, inquiries? Email us:</span>
-        </h2>
-        <div class="text-center md:text-left">
-          <Link href="mailto:pennupgrade@gmail.com" target="_blank" className="text-up-2">
+      <div class="flex items-center justify-between gap-2 rounded-xl bg-up-10 p-2">
+        <div class="flex-shrink overflow-x-auto rounded-md bg-up-12 px-3.5 py-2">
+          <Link
+            href="mailto:pennupgrade@gmail.com"
+            target="_blank"
+            className="font-mono text-up-3 hover:text-up-4"
+          >
             pennupgrade@gmail.com
           </Link>
         </div>
-      </div>
 
-      <div
-        title="uwu"
-        aria-hidden="true"
-        class="cursor-not-allowed text-center font-mono text-up-5 md:text-left"
-      >
-        (✿◡‿◡)
+        <CopyButton
+          text="pennupgrade@gmail.com"
+          className="flex-shrink-0 bg-up-9 hover:bg-up-8 hover:text-up-2"
+        />
       </div>
+    </div>
 
-      <p class="text-center md:text-left">
-        <Link href="https://github.com/pennupgrade/www" target="_blank" className="text-up-2">
-          {"Website code"}
-        </Link> on GitHub. Built in Philly. 💙
+    <div>
+      <h2 class="mb-7 text-24 font-medium leading-none">Elsewhere on the interwebs</h2>
+      <ul class="mb-20 grid grid-cols-2 gap-x-4 gap-y-6 sm:mb-40 sm:gap-y-4">
+        {
+          socials.map(({ name, href }) => (
+            <li>
+              <Link href={href} className="text-up-3 hover:text-up-4">
+                {name}
+              </Link>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="font-mono text-up-8">
+        <span class="cursor-not-allowed whitespace-nowrap" title="uwu">(✿◡‿◡)</span>
+        <br /> Made in Philly. <Link
+          href="https://github.com/pennupgrade/www"
+          target="_blank"
+          className="whitespace-nowrap hover:text-up-6">Source on our GitHub~</Link
+        >
       </p>
     </div>
   </div>
