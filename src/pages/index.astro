@@ -1,7 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-
 import CopyButton from "@/components/copy-button.astro";
 import EventCard from "@/components/event-card.astro";
 import FeaturedGame from "@/components/featured-game.astro";
@@ -9,16 +6,13 @@ import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
-import SpikySection from "@/layouts/spiky-section.astro";
-
-const board = await getCollection("board");
 ---
 
 <HtmlLayout description="We are University of Pennsylvania's game development club.">
   <Header />
 
-  <main class="space-y-16 pt-32 sm:pt-28">
-    <section class="mx-auto max-w-content space-y-6 px-4">
+  <main class="pt-32 sm:pt-28">
+    <section class="mx-auto mb-16 max-w-content space-y-6 px-4">
       <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
         Hey there! We're UPGRADE, <br /> UPenn's game development club.
       </h2>
@@ -26,53 +20,62 @@ const board = await getCollection("board");
       <p class="text-24">Since 2016, we've been making games. Join us!</p>
     </section>
 
-    <section class="mx-auto grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6">
+    <section
+      class="mx-auto mb-24 grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6"
+    >
       <FeaturedGame />
       <EventCard />
     </section>
 
-    <SpikySection>
-      <div class="mb-12 space-y-4">
-        <h2 class="text-30 font-medium leading-none">So what exactly do we do?</h2>
-        <p class="sm:max-w-[425px]">
-          Beyond making games, we also provide UPenn students the resources, opportunities, and
-          environment to foster their passion and creativity.
-        </p>
+    <section class="relative mb-24 w-full bg-up-11 py-10">
+      <div aria-hidden class="spiky absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+
+      <div class="mx-auto max-w-content px-4">
+        <div class="mb-12 space-y-4">
+          <h2 class="text-30 font-medium leading-none">So what exactly do we do?</h2>
+          <p class="sm:max-w-[425px]">
+            Beyond making games, we also provide UPenn students the resources, opportunities, and
+            environment to foster their passion and creativity.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 content:gap-6">
+          <div class="space-y-2 rounded-2xl bg-up-10 p-4">
+            <h3 class="font-bold">Game jams.</h3>
+            <p>
+              We organize and host game jam(s) every year. Food and vibes are always included for
+              free, and anyone can join. The winning team gets free tickets to that year's <Link
+                href="https://east.paxsite.com/"
+                target="_blank"
+                className="text-up-3">PAX East</Link
+              >.
+            </p>
+          </div>
+
+          <div class="space-y-2 rounded-2xl bg-up-10 p-4">
+            <h3 class="font-bold">Workshops + tutorials.</h3>
+            <p>
+              Whether you're new to making games or if you're simply looking to refine your skills,
+              we often host hands-on learning activities. This ranges from learning Git to debugging
+              the Unity editor.
+            </p>
+          </div>
+
+          <div class="space-y-2 rounded-2xl bg-up-10 p-4">
+            <h3 class="font-bold">Speaker events + collabs.</h3>
+            <p>
+              We sometimes invite back Penn alumni and key industry figures to come and talk about
+              their experiences and career journey. We also do crossovers with other Penn clubs!
+            </p>
+          </div>
+        </div>
       </div>
 
-      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 content:gap-6">
-        <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold">Game jams.</h3>
-          <p>
-            We organize and host game jam(s) every year. Food and vibes are always included for
-            free, and anyone can join. The winning team gets free tickets to that year's <Link
-              href="https://east.paxsite.com/"
-              target="_blank"
-              className="text-up-3">PAX East</Link
-            >.
-          </p>
-        </div>
-
-        <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold">Workshops + tutorials.</h3>
-          <p>
-            Whether you're new to making games or if you're simply looking to refine your skills, we
-            often host hands-on learning activities. This ranges from learning Git to debugging the
-            Unity editor.
-          </p>
-        </div>
-
-        <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold">Speaker events + collabs.</h3>
-          <p>
-            We sometimes invite back Penn alumni and key industry figures to come and talk about
-            their experiences and career journey. We also do crossovers with other Penn clubs!
-          </p>
-        </div>
+      <div aria-hidden class="spiky absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100">
       </div>
-    </SpikySection>
+    </section>
 
-    <section class="mx-auto max-w-content space-y-10 px-4">
+    <section class="mx-auto mb-24 max-w-content space-y-10 px-4">
       <div class="mb-12 space-y-4">
         <h2 class="text-30 font-medium leading-none">
           No experience needed, <br /> no applications necessary.
@@ -120,38 +123,6 @@ const board = await getCollection("board");
             />
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="board" class="scroll-mt-32 space-y-5 sm:scroll-mt-24">
-      <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
-
-      <div
-        class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
-      >
-        {
-          board.map(({ data: { src, name, role } }) => {
-            const [first, last] = name.split(" ");
-            const initials = `${first.charAt(0)}${last.charAt(0)}`;
-
-            return (
-              <div class="flex flex-col items-center justify-center gap-4">
-                <Image
-                  src={import(`../assets/board/${src}.jpg`)}
-                  alt={`Photograph of ${name}`}
-                  class="size-40 rounded-full bg-up-5 object-cover"
-                >
-                  {initials}
-                </Image>
-
-                <div class="flex flex-col items-center justify-center">
-                  <h3 class="text-lg font-bold">{name}</h3>
-                  <p class="text-center">{role}</p>
-                </div>
-              </div>
-            );
-          })
-        }
       </div>
     </section>
   </main>
