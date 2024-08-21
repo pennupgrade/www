@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
 import CopyButton from "@/components/copy-button.astro";
 import EventCard from "@/components/event-card.astro";
 import FeaturedGame from "@/components/featured-game.astro";
@@ -6,39 +9,7 @@ import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
-import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
-import {
-  Ban,
-  Code2,
-  Music,
-  Paintbrush,
-  PartyPopper,
-  Pencil,
-  PencilRuler,
-  PlusCircle,
-  ScrollText,
-} from "lucide-astro";
 import SpikySection from "@/layouts/spiky-section.astro";
-
-const aboutList = [
-  {
-    heading: "Game jams",
-    text: "We organize two 24-hour school-wide game jams each semester. Anyone is welcome to participate.",
-  },
-  {
-    heading: "Workshops",
-    text: "For anyone new to game dev or looking to refine their skills, we host hands-on learning activities.",
-  },
-  {
-    heading: "Speaker events",
-    text: "We regularly invite alumni and key industry figures to come and talk about their experiences.",
-  },
-  {
-    heading: "Trips",
-    text: "As an officially recognized school club, we receive funding for trips to conferences like PAX East!",
-  },
-];
 
 const board = await getCollection("board");
 ---
@@ -61,9 +32,9 @@ const board = await getCollection("board");
     </section>
 
     <SpikySection>
-      <div class="mb-12 space-y-2">
+      <div class="mb-12 space-y-4">
         <h2 class="text-30 font-medium leading-none">So what exactly do we do?</h2>
-        <p class="max-w-[425px]">
+        <p class="sm:max-w-[425px]">
           Beyond making games, we also provide UPenn students the resources, opportunities, and
           environment to foster their passion and creativity.
         </p>
@@ -71,7 +42,7 @@ const board = await getCollection("board");
 
       <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 content:gap-6">
         <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold before:content-['1._']">Game jams.</h3>
+          <h3 class="font-bold">Game jams.</h3>
           <p>
             We organize and host game jam(s) every year. Food and vibes are always included for
             free, and anyone can join. The winning team gets free tickets to that year's <Link
@@ -83,7 +54,7 @@ const board = await getCollection("board");
         </div>
 
         <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold before:content-['2._']">Workshops + tutorials.</h3>
+          <h3 class="font-bold">Workshops + tutorials.</h3>
           <p>
             Whether you're new to making games or if you're simply looking to refine your skills, we
             often host hands-on learning activities. This ranges from learning Git to debugging the
@@ -92,7 +63,7 @@ const board = await getCollection("board");
         </div>
 
         <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold before:content-['3._']">Speaker events + collabs.</h3>
+          <h3 class="font-bold">Speaker events + collabs.</h3>
           <p>
             We sometimes invite back Penn alumni and key industry figures to come and talk about
             their experiences and career journey. We also do crossovers with other Penn clubs!
@@ -101,91 +72,54 @@ const board = await getCollection("board");
       </div>
     </SpikySection>
 
-    <section
-      class="flex flex-col items-center justify-between gap-2 rounded-3xl bg-up-5 p-4 md:flex-row lg:gap-56"
-    >
-      <div
-        class="order-2 flex w-full items-center justify-between gap-2 overflow-x-auto rounded-xl bg-up-6 p-3 md:order-1 md:w-1/2 lg:w-5/12"
-      >
-        <h2>
-          <Link
-            href="https://discord.gg/vrhDM7NHph"
-            target="_blank"
-            className="mx-2 font-mono hover:text-up-2 md:mx-4"
-          >
-            discord.gg/vrhDM7NHph
-          </Link>
+    <section class="mx-auto max-w-content space-y-10 px-4">
+      <div class="mb-12 space-y-4">
+        <h2 class="text-30 font-medium leading-none">
+          No experience needed, <br /> no applications necessary.
         </h2>
-
-        <CopyButton text="https://discord.gg/vrhDM7NHph" />
-      </div>
-      <p
-        class="order-1 mr-1.5 text-center font-medium md:order-2 md:w-1/2 md:text-right md:text-xl"
-      >
-        Join our Discord to get the latest updates, announcements, and events!
-      </p>
-    </section>
-
-    <section
-      id="about"
-      class="flex scroll-mt-32 flex-col space-y-10 sm:scroll-mt-24 lg:flex-row lg:gap-10 lg:space-y-5"
-    >
-      <div class="space-y-3 lg:w-5/12">
-        <h2 class="text-center text-3xl font-medium sm:text-left">What do we do?</h2>
-        <p class="text-pretty text-center sm:text-left">
-          Surprise surprise, we primarily make games. But beyond that, we also provide UPenn
-          students the resources and opportunities to foster their passion and creativity.
+        <p class="sm:max-w-[425px]">
+          We welcome anyone who is interested in <em>any</em> aspect of game development. That means
+          you artists, designers, programmers, writers, musicians, etc.
         </p>
       </div>
-      <div class="grid grid-cols-1 grid-rows-2 gap-x-6 gap-y-10 sm:grid-cols-2 lg:w-7/12">
-        {
-          aboutList.map(({ heading, text }, index) => (
-            <div class="relative space-y-1.5 rounded-3xl bg-up-6 p-5 pt-8">
-              <div class="absolute -top-4 flex size-10 items-center justify-center bg-up-5 font-bold">
-                {index + 1}
-              </div>
-              <h3 class="text-xl font-medium">{heading}</h3>
-              <p>{text}</p>
+
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        <div class="space-y-2.5">
+          <h2 class="text-24 font-medium">Join us IRL!</h2>
+          <p>
+            We usually onboard new members at the beginning of the school year. Follow us on <Link
+              href="https://instagram.com/pennupgrade"
+              target="_blank"
+              className="text-up-3">our Instagram</Link
+            > and check our <Link href="/events" className="text-up-3">events page</Link> so you don't
+            miss updates!
+          </p>
+        </div>
+
+        <div>
+          <h2 class="mb-2.5 text-24 font-medium">Join our Discord!</h2>
+          <p class="mb-5">
+            Also, feel free to join our server at any time for the latest events and announcements.
+            It's a pretty chill place, in our opinion.
+          </p>
+
+          <div class="flex items-center justify-between gap-2 rounded-xl bg-up-8 p-2">
+            <div class="flex-shrink overflow-x-auto rounded-md bg-up-9 px-3.5 py-2">
+              <Link
+                href="https://discord.gg/vrhDM7NHph"
+                target="_blank"
+                className="font-mono text-up-3 hover:text-up-4"
+              >
+                discord.gg/vrhDM7NHph
+              </Link>
             </div>
-          ))
-        }
-      </div>
-    </section>
 
-    <section class="space-y-5">
-      <h2 class="text-center text-3xl font-medium sm:text-left">
-        Application process? What's that?
-      </h2>
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-        <p class="order-1 text-pretty rounded-3xl text-center sm:bg-up-5 sm:p-4 sm:text-left">
-          We welcome anyone who is interested in any aspect of game development. That means artists,
-          designers, programmers, writers, musicians, etc.
-        </p>
-        <div
-          aria-hidden="true"
-          class="order-2 flex items-center justify-center gap-2 rounded-3xl bg-up-6 p-4"
-        >
-          <Paintbrush />
-          <PencilRuler />
-          <Code2 />
-          <Pencil />
-          <Music />
-          <PlusCircle />
+            <CopyButton
+              text="https://discord.gg/vrhDM7NHph"
+              className="flex-shrink-0 bg-up-7 hover:bg-up-6 hover:text-up-2"
+            />
+          </div>
         </div>
-        <div
-          aria-hidden="true"
-          class="order-4 flex items-center justify-center gap-2 rounded-3xl bg-up-6 p-4 sm:order-3"
-        >
-          <Ban />
-          <ScrollText />
-          <PartyPopper />
-        </div>
-        <p
-          class="order-3 text-pretty rounded-3xl text-center sm:order-4 sm:bg-up-5 sm:p-4 sm:text-left"
-        >
-          Unlike many Penn clubs, we don't have applications. Just show up to any of our weekly
-          meetings to get started! (And join the Discord.)
-        </p>
       </div>
     </section>
 
