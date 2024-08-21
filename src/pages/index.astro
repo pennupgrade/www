@@ -55,7 +55,7 @@ const board = await getCollection("board");
       <p class="text-24">Since 2016, we've been making games. Join us!</p>
     </section>
 
-    <section class="content:gap-6 mx-auto grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2">
+    <section class="mx-auto grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6">
       <FeaturedGame />
       <EventCard />
     </section>
@@ -69,28 +69,33 @@ const board = await getCollection("board");
         </p>
       </div>
 
-      <div class="content:gap-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
-        <div class="space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold">Game jams.</h3>
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 content:gap-6">
+        <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
+          <h3 class="font-bold before:content-['1._']">Game jams.</h3>
           <p>
-            We host at least one game jam each school year. Food and vibes included for free. Anyone
-            is welcome to participate. Grand prize are free tickets to PAX East every spring.
+            We organize and host game jam(s) every year. Food and vibes are always included for
+            free, and anyone can join. The winning team gets free tickets to that year's <Link
+              href="https://east.paxsite.com/"
+              target="_blank"
+              className="text-up-3">PAX East</Link
+            >.
           </p>
         </div>
 
-        <div class="space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold">Workshops + tutorials.</h3>
+        <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
+          <h3 class="font-bold before:content-['2._']">Workshops + tutorials.</h3>
           <p>
-            For anyone new to making games or if you're simply looking to refine your skills, we
-            often host hands-on learning activities.
+            Whether you're new to making games or if you're simply looking to refine your skills, we
+            often host hands-on learning activities. This ranges from learning Git to debugging the
+            Unity editor.
           </p>
         </div>
 
-        <div class="space-y-2 rounded-2xl bg-up-10 p-4">
-          <h3 class="font-bold">Speaker events + collabs.</h3>
+        <div class="relative space-y-2 rounded-2xl bg-up-10 p-4">
+          <h3 class="font-bold before:content-['3._']">Speaker events + collabs.</h3>
           <p>
-            We regularly invite alumni and key industry figures to come and talk about their
-            experiences. We also do crossovers with other Penn clubs!
+            We sometimes invite back Penn alumni and key industry figures to come and talk about
+            their experiences and career journey. We also do crossovers with other Penn clubs!
           </p>
         </div>
       </div>
