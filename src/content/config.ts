@@ -1,15 +1,15 @@
 import { defineCollection, z } from "astro:content";
 
-const boardCollection = defineCollection({
+const board = defineCollection({
   type: "data",
   schema: z.object({
     src: z.string(),
     name: z.string(),
     role: z.string(),
-    email: z.string().email(),
+    order: z.number(),
   }),
 });
 
 export const collections = {
-  board: boardCollection,
+  board,
 };
