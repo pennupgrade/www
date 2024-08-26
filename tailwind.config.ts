@@ -12,6 +12,7 @@ const config = {
       fontSize: {
         24: "24px",
         30: "30px",
+        48: "48px",
       },
       maxWidth: {
         // 1000px base width, plus 1.5rem x-padding on both sides (25.5px * 2)

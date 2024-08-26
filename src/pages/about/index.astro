@@ -9,40 +9,40 @@ import Footer from "@/layouts/footer.astro";
 const board = await getCollection("board");
 ---
 
-<HtmlLayout description="About the club">
+<HtmlLayout description="A little bit about our club mission and what we do.">
   <Header />
 
-  <main class="mx-auto max-w-content px-4">
-    <section class="scroll-mt-32 space-y-5 sm:scroll-mt-24">
-      <h2 class="text-center text-3xl font-medium sm:text-left">Meet the board</h2>
+  <main class="mx-auto mb-24 max-w-content space-y-16 px-4 pt-32 sm:pt-28">
+    <section class="space-y-6">
+      <h2 class="text-48 font-medium leading-none">We have a mission.</h2>
+      <p class="text-pretty text-24 leading-tight">
+        UPGRADE strives to foster creative expression and cultivate career skills for the artists,
+        programmers, and creatives interested in game development in the Penn community. To do this,
+        we provide opportunities for members to gain hands-on experience with all aspects of the
+        industry. We hope you'll join us on this path!
+      </p>
+    </section>
 
-      <div
-        class="grid grid-cols-2 gap-5 sm:grid-cols-3 sm:gap-x-2 sm:gap-y-7 lg:grid-cols-5 lg:gap-10"
-      >
+    <section class="space-y-6">
+      <h2 class="text-30 font-medium">Meet the board</h2>
+      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
         {
-          board.map(({ data: { src, name, role } }) => {
-            const [first, last] = name.split(" ");
-            const initials = `${first.charAt(0)}${last.charAt(0)}`;
+          board.map(({ data: { src, name, role } }) => (
+            <li class="flex flex-col items-center gap-4 rounded-xl bg-up-11 p-4 content:p-6">
+              <Image
+                src={import(`../../assets/board/${src}.jpg`)}
+                alt={`Photograph of ${name}`}
+                class="rounded-full bg-up-8 object-cover"
+              />
 
-            return (
-              <div class="flex flex-col items-center justify-center gap-4">
-                <Image
-                  src={import(`../../assets/board/${src}.jpg`)}
-                  alt={`Photograph of ${name}`}
-                  class="size-40 rounded-full bg-up-5 object-cover"
-                >
-                  {initials}
-                </Image>
-
-                <div class="flex flex-col items-center justify-center">
-                  <h3 class="text-lg font-bold">{name}</h3>
-                  <p class="text-center">{role}</p>
-                </div>
+              <div class="flex flex-col items-center justify-center gap-2 text-center">
+                <p class="text-24 font-medium leading-none">{name}</p>
+                <p class="font-mono text-up-6">{role}</p>
               </div>
-            );
-          })
+            </li>
+          ))
         }
-      </div>
+      </ul>
     </section>
   </main>
 
