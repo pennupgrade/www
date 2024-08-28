@@ -1,0 +1,28 @@
+---
+import Link from "@/components/link.astro";
+import Footer from "@/layouts/footer.astro";
+import Header from "@/layouts/header.astro";
+import HtmlLayout from "@/layouts/html-layout.astro";
+
+import { getCollection } from "astro:content";
+
+const games = await getCollection("games");
+---
+
+<HtmlLayout description="Games published by the club and by members of our community.">
+  <Header />
+
+  <main class="mx-auto mb-24 max-w-content px-4 pt-32 sm:pt-28">
+    <ul>
+      {
+        games.map((game) => (
+          <li>
+            <Link href={`/games/${game.slug}`}>{game.data.name}</Link>
+          </li>
+        ))
+      }
+    </ul>
+  </main>
+
+  <Footer />
+</HtmlLayout>
