@@ -18,7 +18,7 @@ const games = defineCollection({
       type: z.enum(["club", "student"]),
       jam: z.object({ semester: z.enum(["fall", "spring"]), year: z.number().int() }).optional(),
     }),
-    imageCount: z.number().int().min(0),
+    images: z.array(z.object({ file: z.string(), alt: z.string() })),
     released: z.date(),
     duration: z.string(),
     links: z.array(z.object({ name: z.string(), href: z.string().url() })),
@@ -33,7 +33,14 @@ const games = defineCollection({
           height: z.number().int(),
         })
         .optional(),
-      steam: z.object({ href: z.string().url() }).optional(),
+      steam: z
+        .object({
+          href: z
+            .string()
+            .url()
+            .refine((url) => url.startsWith("https://store.steampowered.com/")),
+        })
+        .optional(),
     }),
     credits: z.array(
       z.union([z.string(), z.object({ role: z.string(), names: z.array(z.string()) })]),
