@@ -1,7 +1,5 @@
 ---
 import CopyButton from "@/components/copy-button.astro";
-import EventCard from "@/components/event-card.astro";
-import FeaturedGame from "@/components/featured-game.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import Link from "@/components/link.astro";
@@ -12,19 +10,12 @@ import HtmlLayout from "@/layouts/html-layout.astro";
   <Header />
 
   <main class="pt-32 sm:pt-28">
-    <section class="mx-auto mb-16 max-w-content space-y-6 px-4">
+    <section class="mx-auto mb-24 max-w-content space-y-6 px-4">
       <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
         Hey there! We're UPGRADE, <br /> UPenn's game development club.
       </h2>
 
       <p class="text-24">Since 2016, we've been making games. Join us!</p>
-    </section>
-
-    <section
-      class="mx-auto mb-24 grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6"
-    >
-      <FeaturedGame />
-      <EventCard />
     </section>
 
     <section class="relative mb-24 bg-up-11 py-10">

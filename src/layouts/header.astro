@@ -1,7 +1,6 @@
 ---
 import { Image } from "astro:assets";
 import logoLight from "@/assets/logo-light.png";
-import Link from "@/components/link.astro";
 
 const FULL_TITLE = "University of Pennsylvania Game Research and Development Environment";
 ---
@@ -17,10 +16,19 @@ const FULL_TITLE = "University of Pennsylvania Game Research and Development Env
       />
     </a>
 
-    <div class="flex items-center gap-8">
-      <Link href="/about" className="text-up-2 hover:text-up-3">About</Link>
-      <Link href="/games" className="text-up-2 hover:text-up-3">Games</Link>
-      <Link href="/events" className="text-up-2 hover:text-up-3">Events</Link>
+    <div class="flex items-center gap-3">
+      <a
+        href="/about"
+        class="rounded-full text-up-2 hover:text-up-4 sm:bg-up-9 sm:px-3.5 sm:py-1 sm:hover:bg-up-8"
+        >About</a
+      >
+
+      <a
+        href="https://pennupgrade.itch.io"
+        target="_blank"
+        class="rounded-full text-up-2 hover:text-up-4 sm:bg-up-9 sm:px-3.5 sm:py-1 sm:hover:bg-up-8"
+        >itch.io</a
+      >
 
       <a
         href="https://discord.gg/vrhDM7NHph"
