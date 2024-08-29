@@ -1,0 +1,19 @@
+---
+import GameTag from "@/components/game-tag.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  gameToParse: CollectionEntry<"games">;
+}
+
+const { gameToParse } = Astro.props;
+const { game, published } = gameToParse.data;
+---
+
+{game.type === "club" ? <GameTag type="club" /> : <GameTag type="student" />}
+
+{game.jam ? <GameTag type="gamejam" /> : null}
+
+{published.steam ? <GameTag type="steam" /> : null}
+
+{published.itch ? <GameTag type="itch.io" /> : null}

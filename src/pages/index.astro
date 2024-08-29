@@ -6,6 +6,10 @@ import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
+
+import { getEntry } from "astro:content";
+
+const featured = await getEntry({ collection: "games", slug: "bionic-traveler" });
 ---
 
 <HtmlLayout description="We are University of Pennsylvania's game dev club. Join us!">
@@ -23,7 +27,7 @@ import HtmlLayout from "@/layouts/html-layout.astro";
     <section
       class="mx-auto mb-24 grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6"
     >
-      <FeaturedGame />
+      <FeaturedGame game={featured} />
       <EventCard />
     </section>
 

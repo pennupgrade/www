@@ -1,37 +1,36 @@
 ---
-import GameTag from "@/components/game-tag.astro";
+import ParsedGameTags from "@/components/parsed-game-tags.astro";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  game: CollectionEntry<"games">;
+}
+
+const { game } = Astro.props;
+const {
+  data: { name },
+} = game;
 ---
 
 <a href="/games/bionic-traveler" class="group">
   <div class="h-full w-full rounded-2xl bg-up-10 p-5 group-hover:bg-up-9">
     <div class="mb-2 flex justify-between gap-4 font-mono sm:mb-0">
-      <p class="font-bold text-up-2">Featured game</p>
+      <p class="font-bold text-up-2">Featured</p>
       <p
         class="h-fit rounded-full bg-up-9 px-3.5 py-1 text-up-4 group-hover:bg-up-8 group-hover:text-up-3 sm:hidden lg:block"
       >
-        View
+        Game
       </p>
     </div>
 
-    <h2 class="mb-1.5 text-30 font-medium">Bionic Traveler</h2>
+    <h2 class="mb-1.5 text-30 font-medium">{name}</h2>
 
     <p class="mb-4 line-clamp-3">
-      Under the leadership of Di Lu (SEAS '22) and Edward Zhang (SEAS + Wharton '23), UPGRADE sought
-      to use the development of this project to teach its members the processes of game development,
-      to serve as an outlet for creative expression, and to provide the expression of bringing a
-      game from concept all the way to market. Thus, the contents of this game were made over the
-      course of a singular academic year at UPenn off of weekly meetings, a few extra-meeting
-      crunches, and a hackathon. The game was ultimately not entirely finished, but this build that
-      is now listed on Steam serves to show off the work that the students in this club were able to
-      accomplish on top of their rigorous course loads at UPenn.
+      {game.body}
     </p>
 
     <ul class="flex flex-wrap gap-2.5">
-      <GameTag type="club" />
-      <GameTag type="student" />
-      <GameTag type="gamejam" />
-      <GameTag type="itch.io" />
-      <GameTag type="steam" />
+      <ParsedGameTags gameToParse={game} />
     </ul>
   </div>
 </a>
