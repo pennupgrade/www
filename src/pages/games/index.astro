@@ -1,9 +1,10 @@
 ---
 import GameTag from "@/components/game-tag.astro";
-import Link from "@/components/link.astro";
+import ParsedGameTags from "@/components/parsed-game-tags.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
+import { Image } from "astro:assets";
 
 import { getCollection } from "astro:content";
 
@@ -17,10 +18,14 @@ const games = await getCollection("games");
     <section class="space-y-8">
       <h2 class="text-30 font-medium leading-none sm:text-48">Our projects!</h2>
 
-      <details open class="space-y-4 rounded-2xl border-2 border-up-11 p-4">
-        <summary class="italic text-up-2">What do the colorful tags mean?</summary>
+      <details class="space-y-4 rounded-2xl border-2 border-up-11">
+        <summary class="cursor-pointer p-4 italic text-up-2"
+          >What do the colorful tags mean?</summary
+        >
 
-        <ul class="xs:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3 sm:gap-x-8">
+        <ul
+          class="xs:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-6 px-4 pb-4 sm:grid-cols-3 sm:gap-x-8"
+        >
           <li class="space-y-2.5">
             <GameTag type="club" />
             <p>
@@ -65,15 +70,42 @@ const games = await getCollection("games");
     </section>
 
     <section class="grid grid-cols-1 gap-4 sm:grid-cols-2">
-      <ul>
-        {
-          games.map((game) => (
-            <li>
-              <Link href={`/games/${game.slug}`}>{game.data.name}</Link>
-            </li>
-          ))
-        }
-      </ul>
+      {
+        games.map((gameEntry) => {
+          const { name, images, game, credits } = gameEntry.data;
+
+          let creditsList = "UPGRADE";
+          if (game.type === "student") {
+            creditsList = credits
+              .map((maybeName) => {
+                if (typeof maybeName === "string") return maybeName;
+                return maybeName.names.join(", ");
+              })
+              .join(", ");
+          }
+
+          return (
+            <a href={`/games/${gameEntry.slug}`} class="group">
+              <h3 class="rounded-t-2xl bg-up-10 p-4 text-30 font-medium leading-none group-hover:bg-up-9">
+                {name}
+              </h3>
+
+              <Image
+                src={images[0].file}
+                alt={images[0].alt}
+                class="h-60 w-full object-cover opacity-95 group-hover:opacity-100"
+              />
+
+              <div class="space-y-3 rounded-b-2xl bg-up-10 p-4 group-hover:bg-up-9">
+                <ul class="flex flex-wrap gap-2.5">
+                  <ParsedGameTags gameToParse={gameEntry} />
+                </ul>
+                <p>By {creditsList}</p>
+              </div>
+            </a>
+          );
+        })
+      }
     </section>
   </main>
 
