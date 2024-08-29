@@ -2,9 +2,8 @@
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
-import type { ImageMetadata } from "astro";
-import { Image } from "astro:assets";
 
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -15,13 +14,8 @@ export async function getStaticPaths() {
   }));
 }
 
-const { slug } = Astro.params;
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-
-const imagesMap = import.meta.glob<{ default: ImageMetadata }>(
-  "../../../content/games/**/*.{jpeg,jpg,png}",
-);
 ---
 
 <HtmlLayout description="Games published by the club and by members of our community.">
@@ -29,12 +23,7 @@ const imagesMap = import.meta.glob<{ default: ImageMetadata }>(
 
   <main class="mb-24 pt-32 sm:pt-28">
     <section class="flex h-80 gap-4">
-      {
-        entry.data.images.map(({ file, alt }) => {
-          const path = `../../../content/games/${slug}/${file}`;
-          return <Image src={imagesMap[path]()} alt={alt} class="w-auto" />;
-        })
-      }
+      {entry.data.images.map(({ file, alt }) => <Image src={file} alt={alt} class="w-auto" />)}
     </section>
 
     <section class="mx-auto max-w-content px-4"><Content /></section>
