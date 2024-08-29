@@ -38,6 +38,7 @@ const config = {
         content: "1051px",
       },
       screens: {
+        xs: "450px",
         content: "1051px",
       },
     },

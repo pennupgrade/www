@@ -38,10 +38,10 @@ switch (type) {
 }
 ---
 
-<li
+<span
   title={title}
   class:list={[
-    "rounded-full px-2 pb-0.5 pt-1 font-mono font-bold leading-none",
+    "h-fit rounded-full px-2 pt-0.5 font-mono font-bold leading-none",
     { "bg-up-5 text-up-9": type === "club" },
     { "bg-orange-600 text-white": type === "student" },
     { "bg-green-400 text-black": type === "gamejam" },
@@ -50,4 +50,4 @@ switch (type) {
   ]}
 >
   {tag}
-</li>
+</span>

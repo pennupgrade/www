@@ -10,10 +10,38 @@ const { gameToParse } = Astro.props;
 const { game, published } = gameToParse.data;
 ---
 
-{game.type === "club" ? <GameTag type="club" /> : <GameTag type="student" />}
+{
+  game.type === "club" ? (
+    <li>
+      <GameTag type="club" />
+    </li>
+  ) : (
+    <li>
+      <GameTag type="student" />
+    </li>
+  )
+}
 
-{game.jam ? <GameTag type="gamejam" /> : null}
+{
+  game.jam ? (
+    <li>
+      <GameTag type="gamejam" />
+    </li>
+  ) : null
+}
 
-{published.steam ? <GameTag type="steam" /> : null}
+{
+  published.steam ? (
+    <li>
+      <GameTag type="steam" />
+    </li>
+  ) : null
+}
 
-{published.itch ? <GameTag type="itch.io" /> : null}
+{
+  published.itch ? (
+    <li>
+      <GameTag type="itch.io" />
+    </li>
+  ) : null
+}

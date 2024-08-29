@@ -1,4 +1,5 @@
 ---
+import GameTag from "@/components/game-tag.astro";
 import Link from "@/components/link.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
@@ -12,16 +13,68 @@ const games = await getCollection("games");
 <HtmlLayout description="Games published by the club and by members of our community.">
   <Header />
 
-  <main class="mx-auto mb-24 max-w-content px-4 pt-32 sm:pt-28">
-    <ul>
-      {
-        games.map((game) => (
-          <li>
-            <Link href={`/games/${game.slug}`}>{game.data.name}</Link>
+  <main class="mx-auto mb-24 max-w-content space-y-8 px-4 pt-32 sm:pt-28">
+    <section class="space-y-8">
+      <h2 class="text-30 font-medium leading-none sm:text-48">Our projects!</h2>
+
+      <details open class="space-y-4 rounded-2xl border-2 border-up-11 p-4">
+        <summary class="italic text-up-2">What do the colorful tags mean?</summary>
+
+        <ul class="xs:grid-cols-2 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3 sm:gap-x-8">
+          <li class="space-y-2.5">
+            <GameTag type="club" />
+            <p>
+              <span class="font-bold">Club games.</span> These are our annual, all-hands-on-deck special
+              projects that showcase what we've learned and represent our collective efforts that year.
+            </p>
           </li>
-        ))
-      }
-    </ul>
+
+          <li class="space-y-2.5">
+            <GameTag type="student" />
+            <p>
+              <span class="font-bold">Student games.</span> Made by Penn students in the UPGRADE community,
+              developed during our meetings. We're proud of 'em and wanna spotlight them here!
+            </p>
+          </li>
+
+          <li class="space-y-2.5">
+            <GameTag type="gamejam" />
+            <p>
+              <span class="font-bold">Games created during one of our gamejams.</span> They may look
+              rough on the edges, but that's because they were made in less than 24 hours!
+            </p>
+          </li>
+
+          <li class="space-y-2.5">
+            <GameTag type="itch.io" />
+            <p>
+              <span class="font-bold">Published on itch.io.</span> These games can usually be directly
+              played from your browser, and may also offer direct downloads for your system.
+            </p>
+          </li>
+
+          <li class="space-y-2.5">
+            <GameTag type="steam" />
+            <p>
+              <span class="font-bold">Published on Steam.</span> This is not a straightforward process
+              for us (nor is it free) so such games are very few and far between (and very very special).
+            </p>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      <ul>
+        {
+          games.map((game) => (
+            <li>
+              <Link href={`/games/${game.slug}`}>{game.data.name}</Link>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
   </main>
 
   <Footer />
