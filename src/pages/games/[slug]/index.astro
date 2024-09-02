@@ -1,10 +1,12 @@
 ---
+import Link from "@/components/link.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import { ArrowLeft } from "lucide-astro";
 
 export async function getStaticPaths() {
   const games = await getCollection("games");
@@ -15,6 +17,9 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
+const {
+  data: { name },
+} = entry;
 const { Content } = await entry.render();
 ---
 
@@ -22,8 +27,40 @@ const { Content } = await entry.render();
   <Header />
 
   <main class="mb-24 pt-32 sm:pt-28">
-    <section class="flex h-80 gap-4">
-      {entry.data.images.map(({ file, alt }) => <Image src={file} alt={alt} class="w-auto" />)}
+    <section class="mx-auto mb-24 max-w-content space-y-1 px-4">
+      <Link
+        href="/games"
+        className="flex items-end font-mono leading-none text-up-3 hover:text-up-4"
+        ><ArrowLeft size={20} class="mr-1.5" /> Back to all games</Link
+      >
+      <h2 class="text-30 font-medium leading-none sm:text-48">
+        {name}
+      </h2>
+    </section>
+
+    <section class="relative mb-24 w-full bg-up-11 py-10">
+      <div aria-hidden class="spiky absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+
+      <div>
+        <div>itch.io embed</div>
+
+        <div class="space-y-4">
+          <h3 class="mx-auto max-w-content px-4 text-24 font-medium">Photos</h3>
+
+          <div
+            class="flex h-80 gap-4 overflow-x-auto pl-4 content:pl-[calc((100vw-1051px)/2+1rem)]"
+          >
+            {
+              entry.data.images.map(({ file, alt }) => (
+                <Image src={file} alt={alt} class="w-auto" />
+              ))
+            }
+          </div>
+        </div>
+      </div>
+
+      <div aria-hidden class="spiky absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100">
+      </div>
     </section>
 
     <section class="mx-auto max-w-content px-4"><Content /></section>
