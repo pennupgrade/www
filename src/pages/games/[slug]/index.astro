@@ -1,5 +1,6 @@
 ---
 import Link from "@/components/link.astro";
+import ParsedGameTags from "@/components/parsed-game-tags.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
@@ -17,9 +18,19 @@ export async function getStaticPaths() {
 }
 
 const { entry } = Astro.props;
-const {
-  data: { name },
-} = entry;
+const { name, game, images, released, duration, links, published, credits } = entry.data;
+const { itch, steam } = published;
+
+const simpleCredits: string[] = [];
+const withRoles: { role: string; names: string }[] = [];
+credits.forEach((maybeName) => {
+  if (typeof maybeName === "string") {
+    simpleCredits.push(maybeName);
+  } else {
+    withRoles.push({ role: maybeName.role, names: maybeName.names.sort().join(", ") });
+  }
+});
+
 const { Content } = await entry.render();
 ---
 
@@ -27,35 +38,48 @@ const { Content } = await entry.render();
   <Header />
 
   <main class="mb-24 pt-32 sm:pt-28">
-    <section class="mx-auto mb-24 max-w-content space-y-1 px-4">
+    <section class="mx-auto mb-20 max-w-content px-4">
       <Link
         href="/games"
-        className="flex items-end font-mono leading-none text-up-3 hover:text-up-4"
+        className="mb-2 flex items-end font-mono leading-none text-up-3 hover:text-up-4"
         ><ArrowLeft size={20} class="mr-1.5" /> Back to all games</Link
       >
-      <h2 class="text-30 font-medium leading-none sm:text-48">
+
+      <h2 class="mb-12 text-30 font-medium leading-none sm:text-48">
         {name}
       </h2>
+
+      {
+        itch ? (
+          <div class="space-y-4">
+            <div class="overflow-x-scroll rounded-2xl bg-up-10 p-4 content:p-6">
+              <iframe
+                allowfullscreen
+                src={`${itch.embedHref}?color=051a2a`}
+                width={itch.width}
+                height={itch.height}
+                class="mx-auto"
+              />
+            </div>
+
+            <p class="space-y-4 rounded-2xl border-2 border-up-11 p-4 italic">
+              <span class="font-bold">Note:</span> make sure your screen size is at least
+              {itch.width}×{itch.height}px to have the best experience!
+            </p>
+          </div>
+        ) : null
+      }
     </section>
 
-    <section class="relative mb-24 w-full bg-up-11 py-10">
+    <section class="relative mb-20 w-full bg-up-11 py-6">
       <div aria-hidden class="spiky absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
 
-      <div>
-        <div>itch.io embed</div>
-
-        <div class="space-y-4">
-          <h3 class="mx-auto max-w-content px-4 text-24 font-medium">Photos</h3>
-
-          <div
-            class="flex h-80 gap-4 overflow-x-auto pl-4 content:pl-[calc((100vw-1051px)/2+1rem)]"
-          >
-            {
-              entry.data.images.map(({ file, alt }) => (
-                <Image src={file} alt={alt} class="w-auto" />
-              ))
-            }
-          </div>
+      <div class="space-y-6">
+        <h3 class="mx-auto max-w-content px-4 text-24 font-medium">Screenshots</h3>
+        <div
+          class="flex h-64 gap-4 overflow-x-scroll pl-4 sm:h-96 content:pl-[calc((100vw-1051px)/2+1rem)]"
+        >
+          {images.map(({ file, alt }) => <Image src={file} alt={alt} class="w-auto rounded-xl" />)}
         </div>
       </div>
 
@@ -63,7 +87,96 @@ const { Content } = await entry.render();
       </div>
     </section>
 
-    <section class="mx-auto max-w-content px-4"><Content /></section>
+    <section class="mx-auto flex max-w-content flex-col gap-10 px-4 sm:flex-row">
+      <div class="grid grid-cols-2 gap-5 sm:flex sm:w-1/4 sm:flex-shrink-0 sm:flex-col">
+        <ul class="col-span-2 flex flex-wrap gap-2.5 pb-1.5">
+          <ParsedGameTags gameToParse={entry} />
+        </ul>
+
+        <div>
+          <p class="font-mono leading-none text-up-3">Released</p>
+          <p class="font-medium sm:text-24">
+            {
+              released.toLocaleDateString("en-US", {
+                month: "long",
+                day: "numeric",
+                year: "numeric",
+                timeZone: "EST",
+              })
+            }
+          </p>
+        </div>
+
+        <div>
+          <p class="font-mono leading-none text-up-3">Duration</p>
+          <p class="font-medium sm:text-24">{duration}</p>
+        </div>
+
+        <div class="col-span-2">
+          <p class="font-mono leading-none text-up-3">Links</p>
+          <ul class="grid grid-cols-2 font-medium sm:block sm:text-24">
+            {
+              itch ? (
+                <li class="w-fit underline decoration-wavy decoration-1 underline-offset-2 hover:text-up-4">
+                  <a href={itch.page} target="_blank">
+                    itch.io Page
+                  </a>
+                </li>
+              ) : null
+            }
+
+            {
+              steam ? (
+                <li class="w-fit underline decoration-wavy decoration-1 underline-offset-2 hover:text-up-4">
+                  <a href={steam.href} target="_blank">
+                    Steam Page
+                  </a>
+                </li>
+              ) : null
+            }
+
+            {
+              links.map((link) => (
+                <li class="w-fit underline decoration-wavy decoration-1 underline-offset-2 hover:text-up-4">
+                  <a href={link.href} target="_blank">
+                    {link.name}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex-grow space-y-10">
+        <div class="space-y-4">
+          {
+            game.jam ? (
+              <p class="font-bold">
+                This game was made during UPGRADE's{" "}
+                {game.jam.semester === "fall" ? "Fall" : "Spring"} {game.jam.year} game jam.
+              </p>
+            ) : null
+          }
+
+          <Content />
+        </div>
+
+        <div>
+          <h2 class="mb-4 text-24 font-medium">Credits</h2>
+
+          {
+            withRoles.map((withRole) => (
+              <p>
+                <span class="font-bold">{withRole.role}:</span> {withRole.names}
+              </p>
+            ))
+          }
+
+          <p class="mt-4">{simpleCredits.sort().join(", ")}</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
