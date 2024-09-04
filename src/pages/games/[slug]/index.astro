@@ -38,7 +38,7 @@ const { Content } = await entry.render();
   <Header />
 
   <main class="mb-24 pt-32 sm:pt-28">
-    <section class="mx-auto mb-20 max-w-content px-4">
+    <section class="mx-auto max-w-content px-4 sm:mb-14">
       <Link
         href="/games"
         className="mb-2 flex items-end font-mono leading-none text-up-3 hover:text-up-4"
@@ -79,7 +79,11 @@ const { Content } = await entry.render();
         <div
           class="flex h-64 gap-4 overflow-x-scroll pl-4 sm:h-96 content:pl-[calc((100vw-1051px)/2+1rem)]"
         >
-          {images.map(({ file, alt }) => <Image src={file} alt={alt} class="w-auto rounded-xl" />)}
+          {
+            images.map(({ file, alt }) => (
+              <Image src={file} alt={alt} class="h-64 w-auto rounded-xl sm:h-96" />
+            ))
+          }
         </div>
       </div>
 
