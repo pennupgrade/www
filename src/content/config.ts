@@ -26,10 +26,18 @@ const games = defineCollection({
       published: z.object({
         itch: z
           .object({
+            page: z
+              .string()
+              .url()
+              .refine((url) => url.includes(".itch.io")),
             embedHref: z
               .string()
               .url()
-              .refine((url) => url.startsWith("https://itch.io/embed-upload/")),
+              .refine((url) => url.startsWith("https://itch.io/embed-upload/"))
+              .refine(
+                (url) => !url.includes("?color"),
+                "Don't include the '?color' param in the URL!",
+              ),
             width: z.number().int(),
             height: z.number().int(),
           })
