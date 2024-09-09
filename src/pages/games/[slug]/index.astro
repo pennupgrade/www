@@ -34,7 +34,9 @@ credits.forEach((maybeName) => {
 const { Content } = await entry.render();
 ---
 
-<HtmlLayout description="Games published by the club and by members of our community.">
+<HtmlLayout
+  description=`${name} is a game made by members of UPGRADE. We are UPenn's game dev club! Learn more about this game, view gameplay screenshots, see the credits, and (obviously) play the game.`
+>
   <Header />
 
   <main class="mb-24 pt-32 sm:pt-28">

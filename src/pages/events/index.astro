@@ -1,0 +1,132 @@
+---
+import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+
+import Footer from "@/layouts/footer.astro";
+import Header from "@/layouts/header.astro";
+import HtmlLayout from "@/layouts/html-layout.astro";
+
+const events = await getCollection("events");
+
+const today = new Date();
+const upcoming: CollectionEntry<"events">[] = [];
+const archive: CollectionEntry<"events">[] = [];
+
+events.forEach((event) => {
+  const { dateTime } = event.data;
+
+  if (dateTime.getTime() - today.getTime() > 0) {
+    upcoming.push(event);
+  } else {
+    archive.push(event);
+  }
+});
+---
+
+<HtmlLayout description="See all our upcoming events and catch up on previous ones.">
+  <Header />
+
+  <main class="mx-auto mb-24 max-w-content space-y-10 px-4 pt-32 sm:space-y-16 sm:pt-28">
+    <section class="space-y-6">
+      <h2 class="text-30 font-medium leading-none sm:text-48">What's happening?!</h2>
+      <p class="text-pretty leading-tight sm:text-24">
+        See all our upcoming events and catch up on previous ones.
+      </p>
+    </section>
+
+    {
+      upcoming.length > 0 ? (
+        <section class="space-y-6">
+          <h3 class="text-24 font-medium leading-none sm:text-30">
+            Upcoming event{upcoming.length > 1 ? "s" : ""}
+          </h3>
+
+          <ul>
+            {upcoming.map(async (event) => {
+              const { Content } = await event.render();
+              const {
+                data: { name, dateTime },
+              } = event;
+
+              return (
+                <li class="flex flex-col gap-4 rounded-2xl bg-up-11 p-4 sm:flex-row sm:gap-8">
+                  <div class="flex flex-shrink-0 flex-col gap-1 sm:w-1/3">
+                    <time
+                      datetime={dateTime.toISOString()}
+                      class="font-mono leading-snug text-up-4"
+                    >
+                      {`${dateTime.toLocaleDateString("en-US", {
+                        weekday: "long",
+                        timeZone: "EST",
+                      })},`}
+                      {dateTime.toLocaleDateString("en-US", {
+                        month: "numeric",
+                        day: "numeric",
+                        timeZone: "EST",
+                      })}
+
+                      <span class="whitespace-nowrap">
+                        @{" "}
+                        {dateTime.toLocaleTimeString("en-US", {
+                          hour: "numeric",
+                          minute: "numeric",
+                          timeZone: "EST",
+                        })}
+                      </span>
+                    </time>
+
+                    <span class="text-24 font-medium leading-none text-up-2">{name}</span>
+                  </div>
+
+                  <div class="space-y-4">
+                    <Content />
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : (
+        <p class="rounded-2xl bg-up-11 p-4 text-center text-up-3">No upcoming events!</p>
+      )
+    }
+
+    <section class="space-y-6">
+      <h3 class="text-24 font-medium leading-none sm:text-30">Archive</h3>
+
+      <ul>
+        {
+          archive.map(async (event) => {
+            const { Content } = await event.render();
+            const {
+              data: { name, dateTime },
+            } = event;
+
+            return (
+              <li class="flex flex-col gap-4 rounded-2xl bg-up-11 p-4 sm:flex-row sm:gap-8">
+                <div class="flex flex-shrink-0 flex-col gap-1 sm:w-1/3">
+                  <time datetime={dateTime.toISOString()} class="font-mono leading-snug text-up-4">
+                    {dateTime.toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                      timeZone: "EST",
+                    })}
+                  </time>
+
+                  <span class="text-24 font-medium leading-none text-up-2">{name}</span>
+                </div>
+
+                <div class="space-y-4">
+                  <Content />
+                </div>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </section>
+  </main>
+
+  <Footer />
+</HtmlLayout>

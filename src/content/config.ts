@@ -57,7 +57,16 @@ const games = defineCollection({
     }),
 });
 
+const events = defineCollection({
+  type: "content",
+  schema: z.object({
+    name: z.string(),
+    dateTime: z.date(),
+  }),
+});
+
 export const collections = {
   board,
   games,
+  events,
 };
