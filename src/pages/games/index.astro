@@ -11,7 +11,9 @@ import { getCollection } from "astro:content";
 const games = await getCollection("games");
 ---
 
-<HtmlLayout description="Games published by the club and by members of our community.">
+<HtmlLayout
+  description="Here we share the games published by the club and by members of our community. Go explore and play them!"
+>
   <Header />
 
   <main class="mx-auto mb-24 max-w-content space-y-8 px-4 pt-32 sm:pt-28">
