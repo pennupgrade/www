@@ -1,5 +1,6 @@
 ---
 import GameTag from "@/components/game-tag.astro";
+import Link from "@/components/link.astro";
 import ParsedGameTags from "@/components/parsed-game-tags.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
@@ -69,6 +70,16 @@ const games = await getCollection("games");
           </li>
         </ul>
       </details>
+
+      <p class="rounded-2xl bg-up-11 p-4">
+        <span class="font-bold">⚠️ Under construction!</span>
+        Please bear with us as we get more of our games up on this page. For now, you can find and explore
+        all of our games on our <Link
+          href="https://pennupgrade.itch.io"
+          target="_blank"
+          className="text-up-3 hover:text-up-4">itch.io page</Link
+        >.
+      </p>
     </section>
 
     <section class="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -95,7 +106,7 @@ const games = await getCollection("games");
               <Image
                 src={images[0].file}
                 alt={images[0].alt}
-                class="h-60 w-full object-cover opacity-95 group-hover:opacity-100"
+                class="h-48 w-full object-cover opacity-95 group-hover:opacity-100 sm:h-60"
               />
 
               <div class="space-y-3 rounded-b-2xl bg-up-10 p-4 group-hover:bg-up-9">
