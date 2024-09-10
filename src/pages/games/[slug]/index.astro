@@ -7,7 +7,7 @@ import HtmlLayout from "@/layouts/html-layout.astro";
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { ArrowLeft } from "lucide-astro";
+import { ArrowLeft, ExternalLink } from "lucide-astro";
 
 export async function getStaticPaths() {
   const games = await getCollection("games");
@@ -40,7 +40,7 @@ const { Content } = await entry.render();
   <Header />
 
   <main class="mb-24 pt-32 sm:pt-28">
-    <section class="mx-auto max-w-content px-4 sm:mb-14">
+    <section class="mx-auto mb-14 max-w-content px-4 sm:mb-20">
       <Link
         href="/games"
         className="mb-2 flex items-end font-mono leading-none text-up-3 hover:text-up-4"
@@ -71,6 +71,21 @@ const { Content } = await entry.render();
           </div>
         ) : null
       }
+
+      {
+        steam ? (
+          <a
+            href={steam.href}
+            target="_blank"
+            class:list={[
+              "flex w-full items-center justify-center gap-1.5 rounded-2xl bg-up-9 px-4 py-2.5 text-up-2 hover:bg-up-8 hover:text-up-1",
+              { "mt-4": itch },
+            ]}
+          >
+            Visit the Steam page! <ExternalLink size={18} />
+          </a>
+        ) : null
+      }
     </section>
 
     <section class="relative mb-20 w-full bg-up-11 py-6">
@@ -79,11 +94,15 @@ const { Content } = await entry.render();
       <div class="space-y-6">
         <h3 class="mx-auto max-w-content px-4 text-24 font-medium">Screenshots</h3>
         <div
-          class="flex h-64 gap-4 overflow-x-scroll pl-4 sm:h-96 content:pl-[calc((100vw-1051px)/2+1rem)]"
+          class="flex gap-6 overflow-x-scroll pl-4 pr-4 content:pl-[calc((100vw-1051px)/2+1rem)]"
         >
           {
             images.map(({ file, alt }) => (
-              <Image src={file} alt={alt} class="h-64 w-auto rounded-xl sm:h-96" />
+              <Image
+                src={file}
+                alt={alt}
+                class="h-48 w-auto max-w-none rounded-xl xs:h-64 sm:h-96"
+              />
             ))
           }
         </div>
