@@ -53,8 +53,8 @@ const socials = [
         {
           socials.map(({ name, href }) => (
             <li>
-              <Link href={href} className="text-up-3 hover:text-up-4">
-                {name}
+              <Link href={href} className="text-up-3 hover:text-up-4 marker:content-['➔']">
+                <span aria-hidden>✦</span> {name}
               </Link>
             </li>
           ))
