@@ -47,6 +47,37 @@
     font-size: 17px;
     @apply bg-up-12 text-up-1;
   }
+
+  article {
+    & p {
+      text-wrap: pretty;
+    }
+
+    & img {
+      @apply rounded-xl bg-up-11;
+    }
+
+    & li {
+      @apply break-words pl-2.5;
+    }
+
+    & ul,
+    ol {
+      @apply ml-3 list-outside;
+
+      ::marker {
+        @apply text-up-3;
+      }
+    }
+
+    & ul {
+      list-style-type: "✦";
+    }
+
+    & ol {
+      list-style-type: decimal;
+    }
+  }
 }
 
 @layer utilities {

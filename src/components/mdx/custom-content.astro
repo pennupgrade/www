@@ -1,0 +1,13 @@
+---
+import type { AstroComponentFactory } from "astro/runtime/server/index.js";
+
+import Anchor from "@/components/mdx/anchor.astro";
+
+interface Props {
+  entryContent: AstroComponentFactory;
+}
+
+const Content = Astro.props.entryContent;
+---
+
+<Content components={{ a: Anchor }} />
