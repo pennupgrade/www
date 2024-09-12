@@ -1,5 +1,6 @@
 ---
 import Link from "@/components/link.astro";
+import CustomContent from "@/components/mdx/custom-content.astro";
 import ParsedGameTags from "@/components/parsed-game-tags.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
@@ -175,7 +176,7 @@ const { Content } = await entry.render();
       </div>
 
       <div class="flex-grow space-y-10">
-        <div class="space-y-4">
+        <article class="space-y-4">
           {
             game.jam ? (
               <p class="font-bold">
@@ -185,8 +186,8 @@ const { Content } = await entry.render();
             ) : null
           }
 
-          <Content />
-        </div>
+          <CustomContent entryContent={Content} />
+        </article>
 
         <div>
           <h2 class="mb-4 text-24 font-medium">Credits</h2>

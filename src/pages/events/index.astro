@@ -6,8 +6,10 @@ import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 import Link from "@/components/link.astro";
+import CustomContent from "@/components/mdx/custom-content.astro";
 
 const events = await getCollection("events");
+events.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
 
 const today = new Date();
 const upcoming: CollectionEntry<"events">[] = [];
@@ -56,7 +58,7 @@ events.forEach((event) => {
             Upcoming event{upcoming.length > 1 ? "s" : ""}
           </h3>
 
-          <ul>
+          <ul class="space-y-4">
             {upcoming.map(async (event) => {
               const { Content } = await event.render();
               const {
@@ -93,23 +95,22 @@ events.forEach((event) => {
                     <span class="text-24 font-medium leading-none text-up-2">{name}</span>
                   </div>
 
-                  <div class="space-y-4">
-                    <Content />
-                  </div>
+                  <article class="space-y-4">
+                    <CustomContent entryContent={Content} />
+                  </article>
                 </li>
               );
             })}
           </ul>
         </section>
       ) : (
-        <p class="rounded-2xl bg-up-11 p-4 text-center text-up-3">No upcoming events!</p>
+        <p class="rounded-2xl bg-up-11 p-4 text-center italic text-up-3">No upcoming events!</p>
       )
     }
 
     <section class="space-y-6">
       <h3 class="text-24 font-medium leading-none sm:text-30">Archive</h3>
-
-      <ul>
+      <ul class="space-y-4">
         {
           archive.map(async (event) => {
             const { Content } = await event.render();
@@ -132,9 +133,9 @@ events.forEach((event) => {
                   <span class="text-24 font-medium leading-none text-up-2">{name}</span>
                 </div>
 
-                <div class="space-y-4">
-                  <Content />
-                </div>
+                <article class="space-y-4">
+                  <CustomContent entryContent={Content} />
+                </article>
               </li>
             );
           })
