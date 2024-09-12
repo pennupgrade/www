@@ -35,6 +35,10 @@
     font-display: block;
   }
 
+  @view-transition {
+    navigation: auto;
+  }
+
   code {
     @apply font-mono text-sm;
   }
