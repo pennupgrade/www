@@ -1,32 +1,32 @@
 ---
-let type: "upcoming" | "past" = "upcoming";
-let date = new Date();
+import { getCollection } from "astro:content";
+
+const events = await getCollection("events");
+events.sort((a, b) => a.data.dateTime.getTime() - b.data.dateTime.getTime());
+
+const recent = events[0];
+const { name, dateTime } = recent.data;
 ---
 
 <a href="/events" class="group">
-  <div class="h-full w-full rounded-2xl bg-up-10 p-5 group-hover:bg-up-9">
-    <div class="mb-2 flex justify-between gap-4 font-mono sm:mb-0">
-      <p class="font-bold text-up-2">{type === "upcoming" ? "Upcoming" : "Last"} event</p>
-      <p
-        class="h-fit rounded-full bg-up-9 px-3.5 py-1 text-up-4 group-hover:bg-up-8 group-hover:text-up-3 sm:hidden lg:block"
-      >
-        Archive
+  <div
+    class="flex h-full w-full flex-col justify-between rounded-2xl bg-up-10 p-5 group-hover:bg-up-9"
+  >
+    <div>
+      <p class="font-mono font-bold text-up-2">
+        {dateTime.getTime() - new Date().getTime() > 0 ? "Upcoming" : "Last"} event
+      </p>
+
+      <h2 class="mb-1.5 text-30 font-medium">{name}</h2>
+
+      <p class="mb-4 line-clamp-3">
+        {recent.body}
       </p>
     </div>
 
-    <h2 class="mb-1.5 text-30 font-medium">Game Jam 2022</h2>
-
-    <p class="mb-4 line-clamp-3">
-      Hello and welcome! We're excited to host another game jam, and we're glad you decided to join.
-      This time, there is a lot more at stake: the winners will get free tickets to PAX. Remember
-      that you should work in groups of 4. (5+ groups are allowed, but we can only send 4 people to
-      PAX, so it may be awkward if you win.) The officers will stay in Towne 337 and it will serve
-      as main HQ, but feel free to work anywhere you want.
-    </p>
-
-    <time datetime={date.toISOString()} class="font-mono text-up-3"
+    <time datetime={dateTime.toISOString()} class="font-mono text-up-3"
       >on {
-        date.toLocaleDateString("en-US", {
+        dateTime.toLocaleDateString("en-US", {
           month: "long",
           day: "numeric",
           year: "numeric",

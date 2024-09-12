@@ -36,6 +36,7 @@ const { Content } = await entry.render();
 
 <HtmlLayout
   description=`${name} is a game made by members of UPGRADE. We are UPenn's game dev club! Learn more about this game, view gameplay screenshots, see the credits, and (obviously) play the game.`
+  title={`${name} (${released.toLocaleDateString("en-US", { year: "numeric", timeZone: "EST" })})`}
 >
   <Header />
 
