@@ -1,4 +1,5 @@
 ---
+import type { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
@@ -6,8 +7,12 @@ import HtmlLayout from "@/layouts/html-layout.astro";
 import Header from "@/layouts/header.astro";
 import Footer from "@/layouts/footer.astro";
 
-let board = await getCollection("board");
+const board = await getCollection("board");
 board.sort((a, b) => a.data.order - b.data.order);
+
+const boardImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/board/*.{jpg,jpeg,png}",
+);
 ---
 
 <HtmlLayout description="A little bit about our club mission and what we do." title="About us">
@@ -26,22 +31,30 @@ board.sort((a, b) => a.data.order - b.data.order);
 
     <section class="space-y-6">
       <h2 class="text-30 font-medium">Meet the board</h2>
-      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3">
+      <ul class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
         {
-          board.map(({ data: { src, name, role } }) => (
-            <li class="flex flex-col items-center gap-4 rounded-xl bg-up-11 p-4 content:p-6">
-              <Image
-                src={import(`../../assets/board/${src}.jpg`)}
-                alt={`Photograph of ${name}`}
-                class="rounded-full bg-up-8 object-cover"
-              />
+          board.map(({ data: { imgFile, name, role } }) => {
+            const boardImage = boardImages[`/src/assets/board/${imgFile}`];
 
-              <div class="flex flex-col items-center justify-center gap-2 text-center">
-                <p class="text-24 font-medium leading-none">{name}</p>
-                <p class="font-mono text-up-5">{role}</p>
-              </div>
-            </li>
-          ))
+            if (!boardImage) {
+              throw new Error(`${imgFile} does not exist!`);
+            }
+
+            return (
+              <li class="flex flex-col items-center gap-4 rounded-xl bg-up-11 p-4 content:p-6">
+                <Image
+                  src={boardImage()}
+                  alt={`Photograph of ${name}`}
+                  class="rounded-full bg-up-8 object-cover"
+                />
+
+                <div class="flex flex-col items-center justify-center gap-2 text-center">
+                  <p class="text-24 font-medium leading-none">{name}</p>
+                  <p class="font-mono text-up-5">{role}</p>
+                </div>
+              </li>
+            );
+          })
         }
       </ul>
     </section>
