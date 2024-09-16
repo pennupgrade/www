@@ -10,6 +10,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
 const games = await getCollection("games");
+games.sort((a, b) => b.data.released.getTime() - a.data.released.getTime());
 ---
 
 <HtmlLayout
