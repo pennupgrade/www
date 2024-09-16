@@ -9,10 +9,11 @@ interface Props {
 const { game } = Astro.props;
 const {
   data: { name },
+  slug,
 } = game;
 ---
 
-<a href="/games/bionic-traveler" class="group">
+<a href={`/games/${slug}`} class="group">
   <div class="h-full w-full rounded-2xl bg-up-10 p-5 group-hover:bg-up-9">
     <p class="font-mono font-bold text-up-2">Featured game</p>
 
