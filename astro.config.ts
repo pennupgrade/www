@@ -22,6 +22,9 @@ const config = defineConfig({
   }),
   // see https://noahflk.com/blog/trailing-slashes-astro
   trailingSlash: "never",
+  redirects: {
+    "/healthsafety": "/games",
+  },
 });
 
 // https://astro.build/config
