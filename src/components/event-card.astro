@@ -12,12 +12,12 @@ const { name, dateTime } = recent.data;
   <div
     class="flex h-full w-full flex-col justify-between rounded-2xl bg-up-10 p-5 group-hover:bg-up-9"
   >
-    <div>
+    <div class="space-y-2">
       <p class="font-mono font-bold text-up-2">
         {dateTime.getTime() - new Date().getTime() > 0 ? "Upcoming" : "Last"} event
       </p>
 
-      <h2 class="mb-1.5 text-30 font-medium">{name}</h2>
+      <h2 class="mb-1.5 text-30 font-medium leading-none">{name}</h2>
 
       <p class="mb-4 line-clamp-3">
         {recent.body}
