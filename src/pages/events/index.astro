@@ -78,12 +78,12 @@ events.forEach((event) => {
                     >
                       {`${dateTime.toLocaleDateString("en-US", {
                         weekday: "long",
-                        timeZone: "EST",
+                        timeZone: "America/New_York",
                       })},`}
                       {dateTime.toLocaleDateString("en-US", {
                         month: "numeric",
                         day: "numeric",
-                        timeZone: "EST",
+                        timeZone: "America/New_York",
                       })}
 
                       <span class="whitespace-nowrap">
@@ -91,7 +91,7 @@ events.forEach((event) => {
                         {dateTime.toLocaleTimeString("en-US", {
                           hour: "numeric",
                           minute: "numeric",
-                          timeZone: "EST",
+                          timeZone: "America/New_York",
                         })}
                       </span>
                     </time>
@@ -130,7 +130,7 @@ events.forEach((event) => {
                       month: "short",
                       day: "numeric",
                       year: "numeric",
-                      timeZone: "EST",
+                      timeZone: "America/New_York",
                     })}
                   </time>
 
