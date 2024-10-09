@@ -1,38 +1,41 @@
 ---
 import { getCollection } from "astro:content";
+import { ChevronRight } from "lucide-astro";
 
 const events = await getCollection("events");
 events.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
 
 const recent = events[0];
 const { name, dateTime } = recent.data;
+
+const { Content } = await recent.render();
 ---
 
-<a href="/events" class="group">
-  <div
-    class="flex h-full w-full flex-col justify-between rounded-2xl bg-up-10 p-5 group-hover:bg-up-9"
-  >
-    <div class="space-y-2">
-      <p class="font-mono font-bold text-up-2">
-        {dateTime.getTime() - new Date().getTime() > 0 ? "Upcoming" : "Last"} event
-      </p>
+<div class="space-y-3 rounded-2xl bg-up-10 p-5">
+  <a href="/events" class="group">
+    <p class="flex items-center gap-0.5 font-mono font-bold text-up-2 group-hover:text-up-4">
+      {dateTime.getTime() - new Date().getTime() > 0 ? "Upcoming" : "Last"} event <ChevronRight
+        size={20}
+      />
+    </p>
 
-      <h2 class="mb-1.5 text-30 font-medium leading-none">{name}</h2>
+    <h2 class="text-30 font-medium leading-none group-hover:text-up-2">{name}</h2>
+  </a>
 
-      <p class="mb-4 line-clamp-3">
-        {recent.body}
-      </p>
+  <div class="relative h-[5.8rem] overflow-hidden">
+    <article class="space-y-4"><Content /></article>
+    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-up-10">
     </div>
-
-    <time datetime={dateTime.toISOString()} class="font-mono text-up-3"
-      >on {
-        dateTime.toLocaleDateString("en-US", {
-          month: "long",
-          day: "numeric",
-          year: "numeric",
-          timeZone: "America/New_York",
-        })
-      }</time
-    >
   </div>
-</a>
+
+  <time datetime={dateTime.toISOString()} class="font-mono text-up-3"
+    >on {
+      dateTime.toLocaleDateString("en-US", {
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        timeZone: "America/New_York",
+      })
+    }</time
+  >
+</div>
