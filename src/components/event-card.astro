@@ -24,7 +24,10 @@ const { Content } = await recent.render();
 
   <div class="relative h-[5.8rem] overflow-hidden">
     <article class="space-y-4"><Content /></article>
-    <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-up-10">
+    <div
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-up-10"
+    >
     </div>
   </div>
 
