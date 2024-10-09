@@ -11,7 +11,7 @@ const { name, dateTime } = recent.data;
 const { Content } = await recent.render();
 ---
 
-<div class="space-y-3 rounded-2xl bg-up-10 p-5">
+<div class="flex flex-col justify-between space-y-3 rounded-2xl bg-up-10 p-5">
   <a href="/events" class="group">
     <p class="flex items-center gap-0.5 font-mono font-bold text-up-2 group-hover:text-up-4">
       {dateTime.getTime() - new Date().getTime() > 0 ? "Upcoming" : "Last"} event <ChevronRight
