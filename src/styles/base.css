@@ -71,6 +71,10 @@
       @apply break-words pl-2.5;
     }
 
+    & code {
+      @apply rounded bg-up-12 px-1.5 pt-0.5 font-mono text-up-2;
+    }
+
     & ul,
     ol {
       @apply ml-3 list-outside;
