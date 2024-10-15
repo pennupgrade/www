@@ -8,7 +8,7 @@ import HtmlLayout from "@/layouts/html-layout.astro";
 
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { ArrowLeft, ExternalLink } from "lucide-astro";
+import { ArrowLeft, ExternalLink, Images } from "lucide-astro";
 
 export async function getStaticPaths() {
   const games = await getCollection("games");
@@ -91,10 +91,12 @@ const { Content } = await entry.render();
     </section>
 
     <section class="relative mb-20 w-full bg-up-11 py-6">
-      <div aria-hidden class="spiky absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+      <div aria-hidden class="spiky-up-11 absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
 
       <div class="space-y-6">
-        <h3 class="mx-auto max-w-content px-4 text-24 font-medium">Screenshots</h3>
+        <h3 class="mx-auto flex max-w-content items-center gap-2 px-4 text-24 font-medium">
+          <Images size="20" /> Screenshots
+        </h3>
         <div
           class="flex gap-6 overflow-x-scroll pl-4 pr-4 content:pl-[calc((100vw-1051px)/2+0.5rem)]"
         >
@@ -110,7 +112,10 @@ const { Content } = await entry.render();
         </div>
       </div>
 
-      <div aria-hidden class="spiky absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100">
+      <div
+        aria-hidden
+        class="spiky-up-11 absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100"
+      >
       </div>
     </section>
 

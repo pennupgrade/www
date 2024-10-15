@@ -8,6 +8,7 @@ import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 
 import { getEntry } from "astro:content";
+import { Image } from "astro:assets";
 
 const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose" });
 ---
@@ -16,13 +17,24 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
   <Header />
 
   <main class="pt-32 sm:pt-28">
-    <section class="mx-auto mb-16 max-w-content space-y-8 px-4">
+    <section class="mx-auto mb-12 max-w-content space-y-8 px-4">
       <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
         Hey there! We're UPGRADE, <br /> UPenn's game development club.
       </h2>
 
-      <p class="text-24 leading-none">Since 2016, we've been making games. Join us!</p>
+      <p class="text-24 leading-none">We've been making games since 2016. Join us!</p>
     </section>
+
+    <div class="relative">
+      <div aria-hidden class="spiky-up-12 absolute inset-x-0 top-0 h-[26px] w-full -scale-y-100">
+      </div>
+      <Image
+        src={import("@/assets/demo_day_2024.jpg")}
+        alt="Group photo of club members taken during Demo Day 2024"
+        class="mb-16 min-h-56 object-cover"
+      />
+      <div aria-hidden class="spiky-up-12 absolute inset-x-0 bottom-0 h-[26px] w-full"></div>
+    </div>
 
     <section
       class="mx-auto mb-24 grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6"
@@ -32,7 +44,7 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
     </section>
 
     <section class="relative mb-24 bg-up-11 py-10">
-      <div aria-hidden class="spiky absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+      <div aria-hidden class="spiky-up-11 absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
 
       <div class="mx-auto max-w-content px-4">
         <div class="mb-12 space-y-4">
@@ -75,7 +87,10 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
         </div>
       </div>
 
-      <div aria-hidden class="spiky absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100">
+      <div
+        aria-hidden
+        class="spiky-up-11 absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100"
+      >
       </div>
     </section>
 
