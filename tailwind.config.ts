@@ -1,5 +1,7 @@
 import { type Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
 import defaultTheme from "tailwindcss/defaultTheme";
+import { default as flattenColorPalette } from "tailwindcss/lib/util/flattenColorPalette";
 
 const config = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
@@ -43,6 +45,24 @@ const config = {
       },
     },
   },
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          spiky: (value) => {
+            const hexOnly = value.split("#")[1];
+            return {
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='47' height='26' viewBox='0 0 47 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M0 23V0L23.5 23L47 0V23V26H0V23Z' fill='%23${hexOnly}'/%3E%3C/svg%3E%0A")`,
+              backgroundRepeat: "repeat-x",
+            };
+          },
+        },
+        {
+          values: flattenColorPalette(theme("colors")),
+        },
+      );
+    }),
+  ],
 } satisfies Config;
 
 export default config;
