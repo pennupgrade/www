@@ -24,6 +24,9 @@ events.forEach((event) => {
     archive.push(event);
   }
 });
+
+// Sort upcoming events in the opposite order. We want people to see the most recent events first
+upcoming.sort((a, b) => a.data.dateTime.getTime() - b.data.dateTime.getTime());
 ---
 
 <HtmlLayout description="See all our upcoming events and catch up on previous ones." title="Events">
