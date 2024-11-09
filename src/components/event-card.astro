@@ -10,10 +10,11 @@ const upcoming = events.filter((event) => {
   return dateTime.getTime() - today.getTime() > 0;
 });
 
-const recent = upcoming[0];
-const { name, dateTime } = recent.data;
+// If there are no upcoming events, display the most recent one
+const recentOrUpcoming = upcoming.length > 0 ? upcoming[0] : events[events.length - 1];
+const { name, dateTime } = recentOrUpcoming.data;
 
-const { Content } = await recent.render();
+const { Content } = await recentOrUpcoming.render();
 ---
 
 <div class="flex flex-col justify-between space-y-3 rounded-2xl bg-up-10 p-5">
