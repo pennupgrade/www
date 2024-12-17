@@ -17,12 +17,23 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
   <Header />
 
   <main class="pt-32 sm:pt-28">
-    <section class="mx-auto mb-12 max-w-content space-y-8 px-4">
-      <h2 class="text-[clamp(2rem,4.5vw,48px)] font-medium leading-none">
-        Hey there! We're UPGRADE, <br /> UPenn's game development club.
-      </h2>
+    <h2
+      class="mx-auto mb-12 max-w-content px-4 text-[clamp(2rem,4.5vw,48px)] font-medium leading-none"
+    >
+      Hey there! We're UPGRADE, <br /> UPenn's game development club.
+    </h2>
 
-      <p class="text-24 leading-none">We've been making games since 2016. Join us!</p>
+    <section class="mb-12 space-y-2">
+      <Image
+        src={import("@/assets/demo_day_2024.jpg")}
+        alt="Group photo of club members taken during Demo Day 2024"
+        class="min-h-56 object-cover"
+      />
+
+      <p class="mx-auto max-w-content text-pretty px-4 text-[16px] italic">
+        <span class="font-medium">Fall 2024 club members.</span> This is us posing for a pic after presenting
+        our minigames.
+      </p>
     </section>
 
     <section
@@ -33,13 +44,13 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
     </section>
 
     <section class="relative mb-24 bg-up-11 py-10">
-      <div aria-hidden class="spiky-up-11 absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+      <div aria-hidden class="absolute inset-x-0 -top-[26px] h-[26px] w-full spiky-up-11"></div>
 
       <div class="mx-auto max-w-content px-4">
         <div class="mb-12 space-y-4">
-          <h2 class="text-30 font-medium leading-none">So what exactly do we do?</h2>
+          <h2 class="text-30 font-medium leading-none">What do we do?</h2>
           <p class="sm:max-w-[425px]">
-            Beyond making games, we also provide UPenn students the resources, opportunities, and
+            Beyond making games, we provide UPenn students the resources, opportunities, and
             environment to foster their passion and creativity.
           </p>
         </div>
@@ -49,7 +60,7 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
             <h3 class="font-bold">Game jams.</h3>
             <p>
               We organize and host game jam(s) every year. Food and vibes are always included for
-              free, and anyone can join. The winning team gets free tickets to that year's <Link
+              free, and anyone can join. The winning team gets prizes, like free tickets to <Link
                 href="https://east.paxsite.com/"
                 target="_blank"
                 className="text-up-3 hover:text-up-4">PAX East</Link
@@ -62,7 +73,7 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
             <p>
               Whether you're new to making games or if you're simply looking to refine your skills,
               we often host hands-on learning activities. This ranges from learning Git to debugging
-              the Unity editor.
+              Unity.
             </p>
           </div>
 
@@ -78,61 +89,68 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
 
       <div
         aria-hidden
-        class="spiky-up-11 absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100"
+        class="absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100 spiky-up-11"
       >
       </div>
     </section>
 
-    <section class="mx-auto mb-24 max-w-content space-y-10 px-4">
-      <div class="mb-12 space-y-4">
+    <section class="mx-auto mb-24 grid max-w-content grid-cols-1 gap-12 px-4 sm:grid-cols-2">
+      <div class="space-y-6">
+        <h2 class="text-30 font-medium leading-none">
+          We've been active since 2016. So come join us...
+        </h2>
+
+        <div class="space-y-8">
+          <div class="space-y-1.5">
+            <h3 class="text-24 font-medium">...in real life!</h3>
+            <p class="font-medium">We usually meet in Levine Hall.</p>
+            <p>
+              New members join at the start of the semester. Follow <Link
+                href="https://instagram.com/pennupgrade"
+                target="_blank"
+                className="text-up-3 hover:text-up-4">our Instagram</Link
+              > and check <Link href="/events" className="text-up-3 hover:text-up-4"
+                >our events page</Link
+              > so you don't miss updates.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="mb-1.5 text-24 font-medium">...on our Discord!</h3>
+            <p class="mb-5">
+              Feel free to join our server any time for the latest events and announcements. It's a
+              very chill place.
+            </p>
+
+            <div class="flex items-center justify-between gap-2 rounded-xl bg-up-8 p-2">
+              <div class="flex-shrink overflow-x-auto rounded-md bg-up-9 px-3.5 py-2">
+                <Link
+                  href="https://discord.gg/vrhDM7NHph"
+                  target="_blank"
+                  className="font-mono text-up-3 hover:text-up-4"
+                >
+                  discord.gg/vrhDM7NHph
+                </Link>
+              </div>
+
+              <CopyButton
+                text="https://discord.gg/vrhDM7NHph"
+                className="flex-shrink-0 bg-up-7 hover:bg-up-6 hover:text-up-2"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-6">
         <h2 class="text-30 font-medium leading-none">
           No experience needed, <br /> no applications necessary.
         </h2>
-        <p class="sm:max-w-[425px]">
+
+        <p>
           We welcome anyone who is interested in <em>any</em> aspect of game development. That means
           you artists, designers, programmers, writers, musicians, etc.
         </p>
-      </div>
-
-      <div class="grid grid-cols-1 gap-12 sm:grid-cols-2">
-        <div>
-          <h2 class="mb-2.5 text-24 font-medium">Join us IRL!</h2>
-          <p class="mb-4 font-medium">GBM times/locations for next sem TBD.</p>
-          <p>
-            New members join at the start of the semester. Follow us <Link
-              href="https://instagram.com/pennupgrade"
-              target="_blank"
-              className="text-up-3 hover:text-up-4">our Instagram</Link
-            > and check <Link href="/events" className="text-up-3 hover:text-up-4"
-              >our events page</Link
-            > so you don't miss updates!
-          </p>
-        </div>
-
-        <div>
-          <h2 class="mb-2.5 text-24 font-medium">Join our Discord!</h2>
-          <p class="mb-5">
-            Feel free to join our server any time for the latest events and announcements. It's a
-            pretty chill place, in our opinion.
-          </p>
-
-          <div class="flex items-center justify-between gap-2 rounded-xl bg-up-8 p-2">
-            <div class="flex-shrink overflow-x-auto rounded-md bg-up-9 px-3.5 py-2">
-              <Link
-                href="https://discord.gg/vrhDM7NHph"
-                target="_blank"
-                className="font-mono text-up-3 hover:text-up-4"
-              >
-                discord.gg/vrhDM7NHph
-              </Link>
-            </div>
-
-            <CopyButton
-              text="https://discord.gg/vrhDM7NHph"
-              className="flex-shrink-0 bg-up-7 hover:bg-up-6 hover:text-up-2"
-            />
-          </div>
-        </div>
       </div>
     </section>
   </main>
