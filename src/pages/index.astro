@@ -2,13 +2,13 @@
 import CopyButton from "@/components/copy-button.astro";
 import EventCard from "@/components/event-card.astro";
 import FeaturedGame from "@/components/featured-game.astro";
+import Link from "@/components/link.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
-import Link from "@/components/link.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 
-import { getEntry } from "astro:content";
 import { Image } from "astro:assets";
+import { getEntry } from "astro:content";
 
 const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose" });
 ---
@@ -125,16 +125,16 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
             <div class="flex items-center justify-between gap-2 rounded-xl bg-up-8 p-2">
               <div class="flex-shrink overflow-x-auto rounded-md bg-up-9 px-3.5 py-2">
                 <Link
-                  href="https://discord.gg/vrhDM7NHph"
+                  href="https://discord.gg/GAXDrMkfCB"
                   target="_blank"
                   className="font-mono text-up-3 hover:text-up-4"
                 >
-                  discord.gg/vrhDM7NHph
+                  discord.gg/GAXDrMkfCB
                 </Link>
               </div>
 
               <CopyButton
-                text="https://discord.gg/vrhDM7NHph"
+                text="https://discord.gg/GAXDrMkfCB"
                 className="flex-shrink-0 bg-up-7 hover:bg-up-6 hover:text-up-2"
               />
             </div>
