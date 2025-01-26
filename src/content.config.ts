@@ -1,7 +1,8 @@
+import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const board = defineCollection({
-  type: "data",
+  loader: glob({ pattern: "**/*.json", base: "./src/content/board" }),
   schema: z.object({
     imgFile: z.string(),
     name: z.string(),
@@ -11,7 +12,7 @@ const board = defineCollection({
 });
 
 const games = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/games" }),
   schema: ({ image }) =>
     z.object({
       name: z.string(),
@@ -58,7 +59,7 @@ const games = defineCollection({
 });
 
 const events = defineCollection({
-  type: "content",
+  loader: glob({ pattern: "**/*.mdx", base: "./src/content/events" }),
   schema: z.object({
     name: z.string(),
     dateTime: z.date(),

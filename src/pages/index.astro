@@ -10,7 +10,10 @@ import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 
-const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose" });
+const featured = await getEntry("games", "duckgooseduckgoose");
+if (!featured) {
+  throw Error("Featured game not found!");
+}
 ---
 
 <HtmlLayout description="We are University of Pennsylvania's game dev club. Join us!">
@@ -44,7 +47,8 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
     </section>
 
     <section class="relative mb-24 bg-up-11 py-10">
-      <div aria-hidden class="absolute inset-x-0 -top-[26px] h-[26px] w-full spiky-up-11"></div>
+      <div aria-hidden="true" class="absolute inset-x-0 -top-[26px] h-[26px] w-full spiky-up-11">
+      </div>
 
       <div class="mx-auto max-w-content px-4">
         <div class="mb-12 space-y-4">
@@ -88,7 +92,7 @@ const featured = await getEntry({ collection: "games", slug: "duckgooseduckgoose
       </div>
 
       <div
-        aria-hidden
+        aria-hidden="true"
         class="absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100 spiky-up-11"
       >
       </div>

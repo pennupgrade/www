@@ -7,13 +7,13 @@ import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { ArrowLeft, ExternalLink, Images } from "lucide-astro";
 
 export async function getStaticPaths() {
   const games = await getCollection("games");
   return games.map((entry) => ({
-    params: { slug: entry.slug },
+    params: { id: entry.id },
     props: { entry },
   }));
 }
@@ -32,7 +32,7 @@ credits.forEach((maybeName) => {
   }
 });
 
-const { Content } = await entry.render();
+const { Content } = await render(entry);
 ---
 
 <HtmlLayout
@@ -91,7 +91,8 @@ const { Content } = await entry.render();
     </section>
 
     <section class="relative mb-20 w-full bg-up-11 py-6">
-      <div aria-hidden class="spiky-up-11 absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+      <div aria-hidden="true" class="absolute inset-x-0 -top-[26px] h-[26px] w-full spiky-up-11">
+      </div>
 
       <div class="space-y-6">
         <h3 class="mx-auto flex max-w-content items-center gap-2 px-4 text-24 font-medium">
@@ -113,8 +114,8 @@ const { Content } = await entry.render();
       </div>
 
       <div
-        aria-hidden
-        class="spiky-up-11 absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100"
+        aria-hidden="true"
+        class="absolute inset-x-0 -bottom-[26px] h-[26px] w-full -scale-y-100 spiky-up-11"
       >
       </div>
     </section>

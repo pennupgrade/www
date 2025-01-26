@@ -23,7 +23,7 @@ const socials = [
 ---
 
 <footer class="relative w-full bg-up-11 pb-20 pt-12">
-  <div aria-hidden class="spiky-up-11 absolute inset-x-0 -top-[26px] h-[26px] w-full"></div>
+  <div aria-hidden="true" class="absolute inset-x-0 -top-[26px] h-[26px] w-full spiky-up-11"></div>
 
   <div class="mx-auto grid max-w-content grid-cols-1 gap-12 px-4 sm:grid-cols-2">
     <div>
@@ -54,7 +54,7 @@ const socials = [
           socials.map(({ name, href }) => (
             <li>
               <Link href={href} className="text-up-3 hover:text-up-4 marker:content-['➔']">
-                <span aria-hidden>✦</span> {name}
+                <span aria-hidden="true">✦</span> {name}
               </Link>
             </li>
           ))

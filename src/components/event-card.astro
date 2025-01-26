@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import { ChevronRight } from "lucide-astro";
 
 const today = new Date();
@@ -14,7 +14,7 @@ const upcoming = events.filter((event) => {
 const recentOrUpcoming = upcoming.length > 0 ? upcoming[0] : events[events.length - 1];
 const { name, dateTime } = recentOrUpcoming.data;
 
-const { Content } = await recentOrUpcoming.render();
+const { Content } = await render(recentOrUpcoming);
 ---
 
 <div class="flex flex-col justify-between space-y-3 rounded-2xl bg-up-10 p-5">

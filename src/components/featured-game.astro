@@ -1,6 +1,6 @@
 ---
 import ParsedGameTags from "@/components/parsed-game-tags.astro";
-import type { CollectionEntry } from "astro:content";
+import { type CollectionEntry, render } from "astro:content";
 import { ChevronRight } from "lucide-astro";
 
 interface Props {
@@ -10,14 +10,14 @@ interface Props {
 const { game } = Astro.props;
 const {
   data: { name },
-  slug,
+  id,
 } = game;
 
-const { Content } = await game.render();
+const { Content } = await render(game);
 ---
 
 <div class="flex flex-col justify-between space-y-3 rounded-2xl bg-up-10 p-5">
-  <a href={`/games/${slug}`} class="group">
+  <a href={`/games/${id}`} class="group">
     <p class="flex items-center gap-0.5 font-mono font-bold text-up-2 group-hover:text-up-4">
       Featured game <ChevronRight size={20} />
     </p>

@@ -12,12 +12,12 @@
   },
   "include": [
     "src/**/*",
-    "**/*.js",
-    "**/*.mjs",
-    "**/*.cjs",
-    "**/*.astro",
+    ".astro/types.d.ts",
     ".eslintrc.cjs",
     "tailwind.config.ts",
-    "astro.config.ts"
-  ]
+    "astro.config.ts",
+    "postcss.config.cjs",
+    "prettier.config.js"
+  ],
+  "exclude": ["dist"]
 }

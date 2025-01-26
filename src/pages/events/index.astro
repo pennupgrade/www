@@ -1,12 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
+import { getCollection, render } from "astro:content";
 
+import Link from "@/components/link.astro";
+import CustomContent from "@/components/mdx/custom-content.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
-import Link from "@/components/link.astro";
-import CustomContent from "@/components/mdx/custom-content.astro";
 
 const events = await getCollection("events");
 events.sort((a, b) => b.data.dateTime.getTime() - a.data.dateTime.getTime());
@@ -53,7 +53,7 @@ upcoming.sort((a, b) => a.data.dateTime.getTime() - b.data.dateTime.getTime());
 
           <ul class="space-y-4">
             {upcoming.map(async (event) => {
-              const { Content } = await event.render();
+              const { Content } = await render(event);
               const {
                 data: { name, dateTime },
               } = event;
@@ -108,7 +108,7 @@ upcoming.sort((a, b) => a.data.dateTime.getTime() - b.data.dateTime.getTime());
       <ul class="space-y-4">
         {
           archive.map(async (event) => {
-            const { Content } = await event.render();
+            const { Content } = await render(event);
             const {
               data: { name, dateTime },
             } = event;

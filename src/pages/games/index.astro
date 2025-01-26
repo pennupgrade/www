@@ -89,7 +89,7 @@ games.sort((a, b) => b.data.released.getTime() - a.data.released.getTime());
           }
 
           return (
-            <a href={`/games/${gameEntry.slug}`} class="group">
+            <a href={`/games/${gameEntry.id}`} class="group">
               <h3 class="rounded-t-2xl bg-up-10 p-4 text-30 font-medium leading-none group-hover:bg-up-9">
                 {name}
               </h3>
