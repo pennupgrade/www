@@ -41,7 +41,13 @@ const boardImages = import.meta.glob<{ default: ImageMetadata }>(
             }
 
             return (
-              <li class="flex flex-col items-center gap-4 rounded-xl bg-up-11 p-4 content:p-6">
+              <li
+                id={name.toLowerCase().split(" ").join("-")}
+                class:list={[
+                  "flex flex-col items-center gap-4 rounded-xl bg-up-11 p-4 content:p-6",
+                  { hidden: name === "Dineth Meegoda" },
+                ]}
+              >
                 <Image
                   src={boardImage()}
                   alt={`Photograph of ${name}`}
@@ -62,3 +68,13 @@ const boardImages = import.meta.glob<{ default: ImageMetadata }>(
 
   <Footer />
 </HtmlLayout>
+
+<script>
+  const url = new URL(window.location.href);
+  const params = url.searchParams;
+
+  if (params.get("kevin") === "ma") {
+    const dineth = document.querySelector<HTMLLIElement>("#dineth-meegoda")!;
+    dineth.classList.remove("hidden");
+  }
+</script>
