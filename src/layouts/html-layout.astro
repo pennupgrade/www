@@ -4,6 +4,7 @@ import "@fontsource/barlow/400.css";
 import "@fontsource/barlow/500.css";
 import "@fontsource/barlow/700.css";
 
+import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
@@ -52,6 +53,7 @@ const finalTitle = (title ? `${title} ✦ ` : "") + "UPGRADE";
 
     <title>{finalTitle}</title>
 
+    <Analytics />
     <SpeedInsights />
   </head>
 

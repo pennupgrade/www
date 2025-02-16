@@ -16,11 +16,7 @@ const config = defineConfig({
   output: "static",
   adapter: vercel({
     imageService: true,
-    webAnalytics: {
-      enabled: true,
-    },
   }),
-  // see https://noahflk.com/blog/trailing-slashes-astro
   trailingSlash: "never",
   redirects: {
     "/healthsafety": "/games",

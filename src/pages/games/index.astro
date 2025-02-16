@@ -1,5 +1,6 @@
 ---
 import GameTag from "@/components/game-tag.astro";
+import Link from "@/components/link.astro";
 import ParsedGameTags from "@/components/parsed-game-tags.astro";
 import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
@@ -20,7 +21,16 @@ games.sort((a, b) => b.data.released.getTime() - a.data.released.getTime());
 
   <main class="mx-auto mb-24 max-w-content space-y-8 px-4 pt-32 sm:pt-28">
     <section class="space-y-8">
-      <h2 class="text-30 font-medium leading-none sm:text-48">Our projects!</h2>
+      <section class="space-y-6">
+        <h2 class="text-30 font-medium leading-none sm:text-48">Our projects!</h2>
+        <p class="text-pretty leading-tight sm:text-24">
+          Note: not the most up to date. Visit our <Link
+            href="https://pennupgrade.itch.io/"
+            target="_blank"
+            className="text-up-2 hover:text-up-3">itch.io page</Link
+          > for more recent games.
+        </p>
+      </section>
 
       <details class="space-y-4 rounded-2xl border-2 border-up-11">
         <summary class="cursor-pointer p-4 italic text-up-2"

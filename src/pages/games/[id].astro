@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+
 import Link from "@/components/link.astro";
 import CustomContent from "@/components/mdx/custom-content.astro";
 import ParsedGameTags from "@/components/parsed-game-tags.astro";
@@ -6,9 +9,9 @@ import Footer from "@/layouts/footer.astro";
 import Header from "@/layouts/header.astro";
 import HtmlLayout from "@/layouts/html-layout.astro";
 
-import { Image } from "astro:assets";
-import { getCollection, render } from "astro:content";
-import { ArrowLeft, ExternalLink, Images } from "lucide-astro";
+import ArrowLeft from "lucide-astro/ArrowLeft";
+import ExternalLink from "lucide-astro/ExternalLink";
+import Images from "lucide-astro/Images";
 
 export async function getStaticPaths() {
   const games = await getCollection("games");

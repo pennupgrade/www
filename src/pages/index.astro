@@ -26,18 +26,11 @@ if (!featured) {
       Hey there! We're UPGRADE, <br /> UPenn's game development club.
     </h2>
 
-    <section class="mb-12 space-y-2">
-      <Image
-        src={import("@/assets/demo_day_2024.jpg")}
-        alt="Group photo of club members taken during Demo Day 2024"
-        class="min-h-56 object-cover"
-      />
-
-      <p class="mx-auto max-w-content text-pretty px-4 text-[16px] italic">
-        <span class="font-medium">Fall 2024 club members.</span> This is us posing for a pic after presenting
-        our minigames.
-      </p>
-    </section>
+    <Image
+      src={import("@/assets/demo_day_2024.jpg")}
+      alt="Group photo of club members taken during Demo Day 2024"
+      class="mb-12 min-h-56 object-cover"
+    />
 
     <section
       class="mx-auto mb-24 grid max-w-content grid-cols-1 gap-4 px-4 sm:grid-cols-2 content:gap-6"
@@ -61,14 +54,14 @@ if (!featured) {
 
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-3 content:gap-6">
           <div class="space-y-2 rounded-2xl bg-up-10 p-4">
-            <h3 class="font-bold">Game jams.</h3>
+            <h3 class="font-bold">Game jams (with prizes).</h3>
             <p>
               We organize and host game jam(s) every year. Food and vibes are always included for
-              free, and anyone can join. The winning team gets prizes, like free tickets to <Link
+              free. In the past, the winning team have received <Link
                 href="https://east.paxsite.com/"
                 target="_blank"
-                className="text-up-3 hover:text-up-4">PAX East</Link
-              >.
+                className="text-up-3 hover:text-up-4">PAX East tickets</Link
+              > and Steam games.
             </p>
           </div>
 
@@ -152,8 +145,8 @@ if (!featured) {
         </h2>
 
         <p>
-          We welcome anyone who is interested in <em>any</em> aspect of game development. That means
-          you artists, designers, programmers, writers, musicians, etc.
+          We welcome anyone who is interested in <em>any</em> aspect of game development. That includes
+          artists, designers, programmers, writers, musicians, etc.
         </p>
       </div>
     </section>
