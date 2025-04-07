@@ -4,18 +4,10 @@ import { defineCollection, z } from "astro:content";
 const board = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "./src/content/board" }),
   schema: z.object({
-    year: z.object({
-      from: z.number().int(),
-      to: z.number().int(),
-    }),
-    members: z.array(
-      z.object({
-        imgFile: z.string(),
-        name: z.string(),
-        role: z.string(),
-        order: z.number().int(),
-      }),
-    ),
+    imgFile: z.string(),
+    name: z.string(),
+    role: z.string(),
+    order: z.number().int(),
   }),
 });
 
