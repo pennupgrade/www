@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://pennupgrade.com/sitemap-index.xml
