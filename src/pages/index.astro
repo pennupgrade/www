@@ -10,7 +10,7 @@ import HtmlLayout from "@/layouts/html-layout.astro";
 import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 
-const featured = await getEntry("games", "duckgooseduckgoose");
+const featured = await getEntry("games", "catanks");
 if (!featured) {
   throw Error("Featured game not found!");
 }
