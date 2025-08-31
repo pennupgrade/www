@@ -13,6 +13,17 @@
     "indentStyle": "space",
     "lineWidth": 100
   },
+  "css": {
+    "formatter": {
+      "enabled": true
+    },
+    "linter": {
+      "enabled": true
+    },
+    "assist": {
+      "enabled": true
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
