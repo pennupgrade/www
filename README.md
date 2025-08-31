@@ -1,3 +1,18 @@
+# Things to talk about
+
+## Tooling
+
+### Bun
+
+You may have heard of npm, pnpm, or Yarn. However, this project uses Bun as the package manager and local development server. It is extremely fast, modern, and cross-platform. Install Bun through [their website](https://bun.sh/).
+
+### Biome
+
+Biome is used as the formatter, linter, and to apply some other automatic code fixes. Follow the [Getting Started section](https://biomejs.dev/guides/getting-started/) for installation instructions. Make sure to also get the [VS Code extension](https://marketplace.visualstudio.com/items?itemName=biomejs.biome).
+
+> [!IMPORTANT]
+> Note that as of Biome 2.2.2, Biome does not fully support Astro files. To circumvent some issues related to this, additional entries have been added to the `overrides` field in `biome.json` as recommended [by the docs here](https://biomejs.dev/internals/language-support/#html-super-languages-support).
+
 # Astro Starter Kit: Minimal
 
 ```sh
