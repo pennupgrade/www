@@ -1,3 +1,4 @@
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 const config = defineConfig({
@@ -10,6 +11,9 @@ const config = defineConfig({
   image: {
     layout: "constrained",
     responsiveStyles: true,
+  },
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
 
