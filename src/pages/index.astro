@@ -8,9 +8,22 @@ import "../styles/global.css";
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>UPGRADE</title>
 	</head>
-	<body class="bg-up-12">
+
+	<body class="animate-fade-in bg-up-12">
+		<div class="fixed inset-0 scrolling-arrows -z-1" aria-hidden="true"></div>
 		<h1 class="text-up-1">Astro</h1>
+		<div>test</div>
 	</body>
 </html>
+
+<script is:inline>
+	if (!sessionStorage.getItem("is-first-time")) {
+		document.documentElement.dataset.firstTime = "";
+	} else {
+		delete document.documentElement.dataset.firstTime;
+	}
+
+	sessionStorage.setItem("is-first-time", "false");
+</script>
