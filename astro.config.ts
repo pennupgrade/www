@@ -7,6 +7,10 @@ const config = defineConfig({
   redirects: {
     "/healthsafety": "https://pennupgrade.itch.io/pennboy",
   },
+  image: {
+    layout: "constrained",
+    responsiveStyles: true,
+  },
 });
 
 // https://astro.build/config
