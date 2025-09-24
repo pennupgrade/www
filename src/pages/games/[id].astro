@@ -187,6 +187,16 @@ const { Content } = await render(entry);
             }
 
             {
+              itch_no_web ? (
+                <li class="w-fit underline decoration-wavy decoration-1 underline-offset-2 hover:text-up-4">
+                  <a href={itch_no_web.href} target="_blank">
+                    itch.io Page
+                  </a>
+                </li>
+              ) : null
+            }
+
+            {
               links.map((link) => (
                 <li class="w-fit underline decoration-wavy decoration-1 underline-offset-2 hover:text-up-4">
                   <a href={link.href} target="_blank">
