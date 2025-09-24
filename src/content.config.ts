@@ -52,7 +52,7 @@ const games = defineCollection({
           })
           .optional(),
         itch_no_web: z.object({
-          href: z.string().url().refine((url) => url.startsWith("https://pennupgrade.itch.io/"))
+          href: z.string().url().refine((url) => url.startsWith("https://") && url.includes(".itch.io/"))
         }).optional()
       }),
       credits: z.array(
