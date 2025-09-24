@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { name, game, images, released, duration, links, published, credits } = entry.data;
-const { itch, steam } = published;
+const { itch, steam, itch_no_web } = published;
 
 const simpleCredits: string[] = [];
 const withRoles: { role: string; names: string }[] = [];
@@ -88,6 +88,21 @@ const { Content } = await render(entry);
             ]}
           >
             Visit the Steam page! <ExternalLink size={18} />
+          </a>
+        ) : null
+      }
+
+      {
+        itch_no_web ? (
+          <a
+            href={itch_no_web.href}
+            target="_blank"
+            class:list={[
+              "flex w-full items-center justify-center gap-1.5 rounded-2xl bg-up-9 px-4 py-2.5 text-up-2 hover:bg-up-8 hover:text-up-1",
+              { "mt-4": itch },
+            ]}
+          >
+            Visit the itch.io page! <ExternalLink size={18} />
           </a>
         ) : null
       }

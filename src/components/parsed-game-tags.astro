@@ -39,7 +39,7 @@ const { game, published } = gameToParse.data;
 }
 
 {
-  published.itch ? (
+  published.itch || published.itch_no_web ? (
     <li>
       <GameTag type="itch.io" />
     </li>

@@ -51,6 +51,9 @@ const games = defineCollection({
               .refine((url) => url.startsWith("https://store.steampowered.com/")),
           })
           .optional(),
+        itch_no_web: z.object({
+          href: z.string().url().refine((url) => url.startsWith("https://pennupgrade.itch.io/"))
+        }).optional()
       }),
       credits: z.array(
         z.union([z.string(), z.object({ role: z.string(), names: z.array(z.string()) })]),
